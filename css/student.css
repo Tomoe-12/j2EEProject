@@ -1,0 +1,56 @@
+.student-register > .container > .photo , .Register-form{
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.student-register > .container > .Register-form > form {
+    background-size: 100% 100%;
+    position: absolute;
+    text-align: center;
+  }
+.student-register > .container > .Register-form > form > h1 {
+    margin-bottom: 10%;
+    font-size: 2.5rem;
+  letter-spacing: 2px;
+   margin-top: 5%;
+   color: #3498db;
+}
+.student-register > .container > .photo {
+    width: 100%;
+    background-image: url('../image/companyRegister.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+  
+  .student-register > .container > .photo {
+    width: 100%;
+    background-image: url('../image/studentRegister.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+.uni{
+    background-image: url(../image/university.png);
+  }
+  .rollno{
+    background-image: url(../image/rollno.png);
+  }
+.student-register > .left > #laptop {
+  position: relative;
+  width: 30%;
+  left: -59%;
+  z-index: 2;
+  transition: 2s;
+  transform: rotate(20deg);
+  top: -14%;
+}
+.student-register > .left > #tools {
+  position: relative;
+  width: 20%;
+  left: -30%;
+  z-index: 2;
+  top: 57%;
+  transform: rotate(-30deg);
+  transition: 2s;
+}

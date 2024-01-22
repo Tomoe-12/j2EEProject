@@ -1,0 +1,214 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  box-sizing: border-box;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.containerBox {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+.company-register,
+.login,
+.student-register {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  height: 100%;
+  transition: 1.5s;
+}
+.company-register {
+  left: -100%;
+}
+.login {
+  left: 0%;
+}
+.student-register{
+  left:100%;
+}
+.half {
+  flex: 1; /* Make each half take up equal width */
+  height: 100%;
+}
+.login > .container{
+background-color: #fff;
+padding: 20px;
+border-radius: 8px;
+box-shadow: 1px -1px 66px -11px rgba(0,0,0,0.84);
+-webkit-box-shadow: 1px -1px 66px -11px rgba(0,0,0,0.84);
+-moz-box-shadow: 1px -1px 66px -11px rgba(0,0,0,0.84);
+text-align: center;
+width: 20%;
+position: absolute;
+top: 20%;
+left: 40%;
+}
+.login > .container > h1 {
+  margin-bottom: 11%;
+  margin-top: 5%;
+  letter-spacing: 2px;
+}
+form > .pp-field{
+  position: relative;
+}
+form >.name , .email , .add , .phno , .password , .cpassword , .uni , .rollno {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-size: 28px 28px;
+  background-position: 8px 10px;
+  background-repeat: no-repeat;
+  padding-left: 44px; /* Adjust this value based on icon size and padding */
+  display:block;
+  font-size: 18px;
+  position: relative;
+  border-radius: 20px;
+  margin-bottom: 8%;
+}
+.email{
+  background-image: url("../image/email.png"); 
+}
+form > .pp-field > .image1{
+  size: 28px;
+  position: absolute;
+  top: 50%;
+  left: 8px;
+  transform: translateY(-50%);
+  color: #555; /* Adjust the color as needed */
+  z-index: 1;
+}
+form > .pp-field > i{
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  size: 29px;
+  cursor: pointer; 
+}
+form > .label{
+  display: flex;
+  margin-top: 8%;
+}
+form > .label > .student , .company{
+  position: relative;
+  margin-bottom: 23px;
+  font-size: 20px;
+}
+form > .label > .student{
+  margin-left: 10%;
+}
+form > .label > .student::after {
+  content: "Student";
+  position: absolute;
+  top: 0%;
+  left: 110%;
+}
+form > .label > .company{
+  margin-left: 40%;
+}
+form > .label > .company::after{
+  content: "Company";
+  position: absolute;
+  top: 0%;
+  left: 110%;
+}
+form > .student , .company {
+  margin-right: 5px;
+}
+form input[type="password"] {
+  background-image: url('lock-icon.png');
+}
+.container > form > .label > input[type="radio"] {
+  width: 20px; /* Adjust the width as needed */
+  height: 20px; /* Adjust the height as needed */
+} 
+ form > .submit {
+  width: 100%;
+  font-size: 20px;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+}
+.container > form > .submit{
+  margin-bottom: 35px;
+}
+.login > .container > form > .submit , .student-register > .container > .Register-form > form > .submit {
+  background-color: #3498db;
+}
+.container > form > .submit:hover , .student-register > .container > .Register-form > form > .submit:hover {
+  background-color:#2e709c;
+}
+.company-register > .container > .Register-form > form > .submit {
+  background-color: pink;
+}
+.company-register > .container > .Register-form > form > .submit:hover{ 
+  background-color: rgb(230, 171, 181);
+}
+.container > p{
+  display: inline;
+  position: relative;
+  font-size: 17px;
+  font-weight: bold;
+}
+.container > #line::before , .container > #line::after {
+  position: absolute;
+  content: "";
+  width: 60%;
+  height: 2px;
+  background-color:#3498db;
+  top: 50%;
+}
+.container > #line::before{
+  left: -65%;
+}
+.container > #line::after{
+  right: -65%;
+}
+.decide{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 5%;
+}
+.decide > span{
+  width: 100%;
+  letter-spacing: 0.7px;
+  font-size: 20px;
+  margin: 9px 10px 5px 10px;
+  font-weight: bold;
+  padding: 7px 0px;
+  border-radius: 4px;
+  border: 1px solid #3498db;
+  color: #fff;
+  background-color: #3498db;
+}
+input[type="checkbox"]{
+  margin-right: 5px;
+}
+.login > .left > #img2 {
+  position: relative;
+  width: 45%;
+  left: 25%;
+  top: 10%;
+}
+.login > .right > #img1  {
+  position: relative;
+  width: 25%;
+  left: 18%;
+  top: 10%;
+}

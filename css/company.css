@@ -1,0 +1,88 @@
+.login .left,
+.company-register .right {
+  background-color: #3498db;
+}
+.login .right , .student-register .left {
+  background-color: pink;
+}
+.company-register > .left,
+.student-register > .right {
+  background-color: white;
+}
+.company-register >.container , .student-register > .container {
+  width: 90%;
+  position: absolute;
+  height: 90%;
+  top: 5%;
+  left: 5%;
+  display: flex;
+  box-shadow: 1px -1px 62px 7px rgba(0,0,0,0.84);
+  -webkit-box-shadow: 1px -1px 62px 7px rgba(0,0,0,0.84);
+  -moz-box-shadow: 1px -1px 62px 7px rgba(0,0,0,0.84);
+}
+.company-register > .container > .photo , .Register-form   {
+  width: 100%;
+position: relative;
+display: flex;
+align-items: center;
+justify-content: center;
+
+}
+.company-register > .container > .photo , .student-register > .container > .photo {
+  width: 100%;
+  background-image: url('../image/companyRegister.jpg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.company-register > .container > .Register-form > form {
+  background-size: 100% 100%;
+  position: absolute;
+  width: 40%;
+  text-align: center;
+}
+.company-register > .container > .Register-form > form > h1  {
+   margin-bottom: 10%;
+   font-size: 2.5rem;
+  margin-top: 5%;
+  letter-spacing: 2px;
+  color: pink;
+}
+.name{
+  background-image: url("../image/company_name.png");
+}
+.add{
+  background-image: url("../image/address.png"); 
+}
+.phno{
+  background-image: url("../image/phone.png");
+}
+#pass-wrong1 , #pass-wrong2  , #pass-wrong3 {
+  height: 25px;
+  padding-right: 30px;
+  margin-top: -8%;
+  text-align:right;
+}
+.Register-form > form > .submit{
+  margin-bottom: 7px;
+}
+a{
+  text-decoration: none;
+  font-weight: bold;
+  color: blue;
+}
+.login > .left > #Computer {
+  position: relative;
+  width: 22%;
+ right: 55%;
+ top: 15%;
+ transform: rotate(15deg);
+ transition: 2s;
+}
+.login > .left > #cup_object{
+  position: relative;
+  width: 14%;
+  left: 5%;
+  top: -53%;
+  transition: 2s;
+  transform: rotate(15deg);
+}

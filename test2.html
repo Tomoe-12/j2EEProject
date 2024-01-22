@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Matching Example</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var passwordInputs = document.querySelectorAll('.password');
+            var confirmPasswordInputs = document.querySelectorAll('.cpassword');
+            var passWrongDivs = document.querySelectorAll('.pass-wrong');
+            var submitButtons = document.querySelectorAll('.submit');
+
+            submitButtons.forEach(function (submitButton, index) {
+                submitButton.addEventListener('click', function (event) {
+                    var passwordInput = passwordInputs[index];
+                    var confirmPasswordInput = confirmPasswordInputs[index];
+                    var passWrongDiv = passWrongDivs[index];
+
+                    if (passwordInput.value !== confirmPasswordInput.value) {
+                        passWrongDiv.textContent = 'Wrong password';
+                        event.preventDefault();
+                    } else {
+                        passWrongDiv.textContent = '';
+                        submitButton.closest('form').submit();
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <form action="your_destination_page.html" method="post">
+        <div class="pp-field">
+            <input type="password" name="password" class="password" placeholder="password" required />
+            <img src="../image/password.png" alt="password" class="image1">
+            <i class="fas fa-eye" id="togglePassword1"></i>
+        </div>
+        <div class="pp-field">
+            <input type="password" name="cpassword" class="cpassword" required placeholder="confirm password" />
+            <img src="../image/approve.png" alt="confirm" class="image1">
+            <i class="fas fa-eye" id="toggleCPassword1"></i>
+        </div>
+        <div class="pass-wrong"></div>
+        <input class="submit" type="button" value="Login" />
+    </form>
+
+    <form action="another_destination_page.html" method="post">
+        <div class="pp-field">
+            <input type="password" name="password" class="password" placeholder="password" required />
+            <img src="../image/password.png" alt="password" class="image1">
+            <i class="fas fa-eye" id="togglePassword2"></i>
+        </div>
+        <div class="pp-field">
+            <input type="password" name="cpassword" class="cpassword" required placeholder="confirm password" />
+            <img src="../image/approve.png" alt="confirm" class="image1">
+            <i class="fas fa-eye" id="toggleCPassword2"></i>
+        </div>
+        <div class="pass-wrong"></div>
+        <input class="submit" type="button" value="Login" />
+    </form>
+</body>
+</html>

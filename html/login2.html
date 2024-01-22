@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+   <link rel="stylesheet" href="../css/login.css">
+   <link rel="stylesheet" href="../css/company.css">
+   <link rel="stylesheet" href="../css/student.css">
+
+</head>
+<body>
+   <div class="container-box">
+
+    <!-- This is a company register side html -->
+    <div class="company-register" id="company-register">
+        <div class="half left "></div>
+        <div class="container">
+            <div class="photo">
+              
+            </div>
+            
+            <div class="Register-form">
+           
+             <form id="myForm1"action="LoginServlet" method="post" onsubmit="onclick()">
+                <h1>Register</h1>
+                <input type="text" name="name" placeholder="Company Name" class="name" id="Cname">
+                <input type="text" name="email" id="Cemail" placeholder="email" class="email" required/>
+                <input type="address" name="add" class="add" placeholder="Address" id="Cadd" required>
+                <input type="text" name="phno" placeholder="Contact Number" id="Cphno" class="phno" required>
+                <div class="pp-field">
+                  <input type="password" name="password" class="password" id="password1" placeholder="password" required  />
+                  <img src="../image/password.png" alt="password" class="image1">
+                  <i class="fas fa-eye" id="togglePassword1"></i>
+                </div>
+                <div id="pass-wrong1"></div>
+                <div class="pp-field">
+                  <input type="password" name="cpassword" class="cpassword" id="cpassword1" required placeholder="confirm password" />
+                  <img src="../image/approve.png" alt="confirm" class="image1">
+                  <i class="fas fa-eye" id="toggleCPassword1"></i>
+                </div>
+                <input class="submit" type="submit" value="Login" onclick="checkCompany()" />
+                <div> Already have Account?<a id="origin1">Login In</a>  </div>
+                
+            </form>
+          
+            </div>
+          
+        </div>
+        <div class="half right">
+         
+        </div>
+    </div>
+  
+     <!-- This is a login side html -->
+     <div class="login" id="login">
+        <div class="half left">
+          <img src="../image/cup_object.png" id="cup_object">
+          <img src="../image/man_lift.png" alt="" id="img2">
+         
+          <img src="../image/Computer.png" alt="" id="Computer">
+        </div>
+        <div class="container"> 
+          <h1>Login here</h1>
+           <form id="myForm2" action="LoginServlet" method="post" onsubmit="checkLogin()">
+                <input type="text" name="email" class="email" id="Lemail"placeholder="email" required/>
+                <div class="pp-field">
+                  <input type="password" name="password" class="password" id="password2" placeholder="password" />
+                  <img src="../image/password.png" alt="password" class="image1">
+                  <i class="fas fa-eye" id="togglePassword2"></i>
+                </div>
+                <div id="pass-wrong2"></div>
+                <div class="pp-field">
+                  <input type="password" name="cpassword" class="cpassword" id="cpassword2" required placeholder="confirm password" />
+                  <img src="../image/approve.png" alt="confirm" class="image1">
+                  <i class="fas fa-eye" id="toggleCPassword2"></i>
+                </div>
+              <div class="label">
+                <input type="radio" class="student" name="role" value="Student" required />
+                <input type="radio" class="company" name="role" value="Company" required />
+              </div>
+                <input class="submit"type="submit" value="Login" class="submit" required onclick="checkLogin()"/>
+            </form>
+            <p id="line">Don't have account ?</p><br>
+            <p> Register as</p>
+            <div class="decide">
+              <span id="companySide" >Company</span>
+              <span id="studentSide" >Student</span>
+            </div> 
+        </div>
+        <div class="half right">
+          <img src="../image/manLookingForEmployee.png" alt="manLookingForEmployee" id="img1">
+          
+
+        </div>
+     </div>
+
+      <!-- This is a student register side html -->
+     <div class="student-register" id="student-register">
+        <div class="half left">
+          <img src="../image/tools.png" alt="" id="tools">
+          <img src="../image/Laptop.png" alt="" id="laptop">
+        </div>
+        <div class="container">
+          <div class="Register-form">
+            <form id="myForm3"action="LoginServlet" method="post" onsubmit="onclick()">
+              <h1>Register</h1>
+              <input type="text" name="name" placeholder="Company Name" class="name" id="Sname">
+              <input type="text" name="email" id="Semail" placeholder="email" class="email" required/>
+              <input type="address" name="add" class="add" placeholder="Address" id="Sadd" required>
+              <input type="text" name="uni" placeholder="University" id="Suni" required class="uni">
+              <input type="text" name="rollno" placeholder="Roll No" id="Srollno" required class="rollno" >
+              <input type="text" name="phno" placeholder="Contact Number" id="Sphno" class="phno" required>
+              <div class="pp-field">
+                <input type="password" name="password" class="password" id="password3" placeholder="password" required  />
+                <img src="../image/password.png" alt="password" class="image1">
+                <i class="fas fa-eye" id="togglePassword3"></i>
+              </div>
+              <div id="pass-wrong3"></div>
+              <div class="pp-field">
+                <input type="password" name="cpassword" class="cpassword" id="cpassword3" required placeholder="confirm password" />
+                <img src="../image/approve.png" alt="confirm" class="image1">
+                <i class="fas fa-eye" id="toggleCPassword3"></i>
+              </div>
+              <input class="submit" type="submit" value="Login" onclick="checkStudent()" />
+              <div> Already have Account?<a id="origin2" >Login In</a>  </div>
+              
+          </form>
+         
+           </div>
+          <div class="photo">
+
+          </div>
+          </div>
+          <div class="half right"></div>
+      </div>
+       
+     </div>
+   
+
+   <script src="../js/passwordEyeButton.js"></script>
+   <script src="../js/passwordCheck.js"></script>
+   <script src="../js/MovingAround.js"></script>
+</body>
+</html>
