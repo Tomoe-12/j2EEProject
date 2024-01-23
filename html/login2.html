@@ -18,7 +18,7 @@
         <div class="half left "></div>
         <div class="container">
             <div class="photo">
-              
+            
             </div>
             
             <div class="Register-form">
@@ -28,7 +28,7 @@
                 <input type="text" name="name" placeholder="Company Name" class="name" id="Cname">
                 <input type="text" name="email" id="Cemail" placeholder="email" class="email" required/>
                 <input type="address" name="add" class="add" placeholder="Address" id="Cadd" required>
-                <input type="text" name="phno" placeholder="Contact Number" id="Cphno" class="phno" required>
+                <input type="text" name="phno" placeholder="Contact Number" id="Cphno" class="phno" required data-mask="00 000 000 000">
                 <div class="pp-field">
                   <input type="password" name="password" class="password" id="password1" placeholder="password" required  />
                   <img src="../image/password.png" alt="password" class="image1">
@@ -110,8 +110,8 @@
               <input type="text" name="email" id="Semail" placeholder="email" class="email" required/>
               <input type="address" name="add" class="add" placeholder="Address" id="Sadd" required>
               <input type="text" name="uni" placeholder="University" id="Suni" required class="uni">
-              <input type="text" name="rollno" placeholder="Roll No" id="Srollno" required class="rollno" >
-              <input type="text" name="phno" placeholder="Contact Number" id="Sphno" class="phno" required>
+              <input type="text" name="rollno" placeholder="Roll No" id="Srollno" required class="rollno">
+              <input type="text" name="phno" placeholder="Contact Number" id="Sphno" class="phno" required data-mask="00 000 000 000">
               <div class="pp-field">
                 <input type="password" name="password" class="password" id="password3" placeholder="password" required  />
                 <img src="../image/password.png" alt="password" class="image1">
@@ -138,7 +138,8 @@
        
      </div>
    
-
+   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
    <script src="../js/passwordEyeButton.js"></script>
    <script src="../js/passwordCheck.js"></script>
    <script src="../js/MovingAround.js"></script>
