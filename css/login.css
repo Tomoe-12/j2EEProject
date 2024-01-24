@@ -146,17 +146,11 @@ form input[type="password"] {
 .container > form > .submit{
   margin-bottom: 35px;
 }
-.login > .container > form > .submit , .student-register > .container > .Register-form > form > .submit {
+.login > .container > form > .submit {
   background-color: #3498db;
 }
 .container > form > .submit:hover , .student-register > .container > .Register-form > form > .submit:hover {
   background-color:#2e709c;
-}
-.company-register > .container > .Register-form > form > .submit {
-  background-color: pink;
-}
-.company-register > .container > .Register-form > form > .submit:hover{ 
-  background-color: rgb(230, 171, 181);
 }
 .container > p{
   display: inline;

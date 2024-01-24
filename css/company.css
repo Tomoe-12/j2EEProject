@@ -1,9 +1,9 @@
 .login .left,
 .company-register .right {
-  background-color: #3498db;
+  background-color: cyan;
 }
 .login .right , .student-register .left {
-  background-color: pink;
+  background-color: rgba(255,242,226,255);
 }
 .company-register > .left,
 .student-register > .right {
@@ -26,7 +26,6 @@ position: relative;
 display: flex;
 align-items: center;
 justify-content: center;
-
 }
 .company-register > .container > .photo , .student-register > .container > .photo {
   width: 100%;
@@ -45,7 +44,6 @@ justify-content: center;
    font-size: 2.5rem;
   margin-top: 5%;
   letter-spacing: 2px;
-  color: pink;
 }
 .name{
   background-image: url("../image/company_name.png");
@@ -64,6 +62,12 @@ justify-content: center;
 }
 .Register-form > form > .submit{
   margin-bottom: 7px;
+}
+.company-register > .container > .Register-form > form > .submit {
+  background-color:black;
+}
+.company-register > .container > .Register-form > form > .submit:hover{ 
+  background-color: rgb(65, 63, 63);
 }
 a{
   text-decoration: none;

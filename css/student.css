@@ -16,6 +16,7 @@
   letter-spacing: 2px;
    margin-top: 5%;
    color: #3498db;
+   color: black;
 }
 .student-register > .container > .photo {
     width: 100%;
@@ -53,4 +54,7 @@
   top: 57%;
   transform: rotate(-30deg);
   transition: 2s;
+} 
+.student-register > .container > .Register-form > form > .submit {
+  background-color: black;
 }
