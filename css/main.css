@@ -21,7 +21,9 @@ main{
     display: flex;
     align-items: center;
     justify-content: space-around;
-  
+}
+.stu{
+    justify-content: flex-start;
 }
 .box > .numOfStuShow , .numOfJobOffer , .numOfCom{
     width: 20%;
