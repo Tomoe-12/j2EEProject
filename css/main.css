@@ -1,0 +1,52 @@
+main{
+    position :absolute;
+    top: 0;
+    right: 0;
+    width: 87%;
+    height: 100%;
+    padding-left: 35px;
+    border: 1px solid red;
+}
+.main{
+    width: 100%;
+    height: 92%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid blue;
+}
+.box{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  
+}
+.box > .numOfStuShow , .numOfJobOffer , .numOfCom{
+    width: 20%;
+    height: 100%;
+    padding: 10px;
+    border: 2px solid black;
+    display: flex; 
+    align-items: center;
+    justify-content: space-between; 
+    border-radius: 10px;
+
+}
+#Flat , #offer , #building {
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.stuShow , .jobShow , .comShow{
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.text {
+    font-size: 16px;
+}
+.number{
+    font-size: 22px;
+}
