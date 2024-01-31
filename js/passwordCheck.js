@@ -12,8 +12,7 @@ let passwordCheck = (password , cpassword , form , message )=> {
         password.style.borderColor = '#ccc'
         cpassword.style.borderColor = '#ccc'
         message.textContent = '';
-        form.onsubmit = null;
-        
+        form.onsubmit = null;   
     }
 }
 function checkCompany() {

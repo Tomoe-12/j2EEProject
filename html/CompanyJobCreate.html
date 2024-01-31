@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Cereate The Form</title>
+</head>
+<body>
+	<center>
+		<h2>Enter Your Job Information</h2>
+		<form action="JobCreate" method="post">
+			<table>
+				<tr>
+					<td>Company Name:</td>
+					<td><input type="text" name="name" required></td>
+				</tr>
+				<tr>
+					<td>Company Email</td>
+					<td><input type="text" name="email" required></td>
+				</tr>
+				<tr>
+					<td>Company Address</td>
+					<td><input type="text" name="add" required></td>
+				</tr>
+				<tr>
+					<td>Phone Number:</td>
+					<td><input type="text" name="phno" required></td>
+				</tr>
+				<tr>
+					<td>How many person that you looking for:</td>
+					<td><input type="text" name="person" required></td>
+				</tr>
+				<tr>
+					<td>Positions :</td>
+					<td><input type="text" name="position" required></td>
+				</tr>
+				<tr>
+					<td>Priority Persionality:</td>
+					<td>
+						<select name="personal" required>
+							<option name="personal" value="Opnness">Openness</option>
+							<option name="personal" value="Conscientiousness">Conscientiousness</option>
+							<option name="personal" value="Extroversion">Extroversion</option>
+							<option name="personal" value="Agreeavleness">Agreeableness</option>
+							<option name="personal" value="Neuroticism">Neuroticism</option>
+						</select>
+					</td>
+				</tr>
+
+				<tr>
+					<td>Require Skill:</td>
+					<td><input type="text" name="skill" required></td>
+				</tr>
+
+				<tr>
+					<th><input type="reset" value="Clear"></th>
+					<th><input type="Submit" value="Insert"></th>
+			</table>
+		</form>
+	</center>
+</body>
+
+</html>

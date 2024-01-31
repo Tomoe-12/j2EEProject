@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Student Fill The Job Form</title>
+</head>
+
+<body>
+    <center>
+        <h2>Complete Form</h2>
+        <form action="FillJob" method="post">
+            <table>
+                <tr>
+                    <td>Full Name:</td>
+                    <td><input type="text" name="name" required></td>
+                </tr>
+                <tr>
+                    <td>Address:</td>
+                    <td><input type="text" name="add" required></td>
+                </tr>
+                <tr>
+                    <td>University:</td>
+                    <td><input type="text" name="uni" required></td>
+                </tr>
+                <tr>
+                    <td>Phone Number:</td>
+                    <td><input type="text" name="phno" required></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="text" name="email" required></td>
+                </tr>
+                <tr>
+                    <td>Date Of Birth:</td>
+                    <td><input type="date" name="dob" required></td>
+                </tr>
+                <tr>
+                    <td>Gender:</td>
+                    <td>
+                        <input type="radio" name="gender" value="Male" required > Male
+                        <input type="radio" name="gender" value="Female" required> Female
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Availibity:</td>
+                    <td><input type="text" name="avai" required></td>
+                </tr>
+                <tr>
+                    <td>Degree:</td>
+                    <td><input type="text" name="deg" required></td>
+                </tr>
+                <tr>
+                    <td>CV:</td>
+                    <td><input type="file" name="cv" required></td>
+                </tr>
+
+
+                <tr>
+                    <th><input type="reset" value="Clear"></th>
+                    <th><input type="Submit" value="Insert"></th>
+            </table>
+        </form>
+    </center>
+</body>
+
+</html>
