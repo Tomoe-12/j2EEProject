@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Cereate The Form</title>
+
+
+<style>
+	.big5{
+		display: flex;
+		align-items: flex-end;
+		justify-content: flex-start;
+		cursor: pointer;
+	}
+	#about{
+		overflow-y: scroll;
+		overflow-x: scroll;
+		margin-top: 0px;
+		width:300px;
+		height:300px;
+		background-image:linear-gradient(whitesmoke,lightgrey);
+	    box-sizing: content-box;
+	    box-shadow: 9px 9px 9px black;
+	    cursor: pointer;
+    }
+	#btn:hover{
+		color:white;
+		background-color: black;
+		cursor: pointer;
+    }
+	#btn1:hover{
+		color:white;
+		background-color: black;
+		cursor: pointer;
+	}
+	#h3:hover{
+		color:red;
+		transition: 0.6s;
+	}
+	#h3{
+		color:green
+	}
+	
+</style>
+</head>
+<body> 
+	<div class="big5">
+
+	<span id="h3">What are Big 5 models?</span>&emsp;
+	<input type="button"  id="btn" onclick="about()" value="Learn More">
+	
+	</div>
+	<div id="about" style="visibility: hidden; position: absolute; ">
+
+    <h3>Extroversion</h3>
+	
+	<p>&emsp;Extroversion (E) is the personality trait of seeking fulfillment from sources outside the self or in community. High scorers tend to be very social 
+	while low scorers prefer to work on their projects alone</p>
+    <h3>Agreeableness</h3>
+
+	<p>&emsp; Agreeableness (A) reflects how much individuals adjust their behavior to suit others. High scorers are typically polite and like people. Low scorers 
+	tend to 'tell it like it is</p>
+
+	<h3>Conscientiousness</h3>
+
+	<p>&emsp;Conscientiousness (C) is the personality trait of being honest and hardworking. High scorers tend to follow rules and prefer clean homes. Low 
+	scorers may be messy and cheat others</p>
+
+	<h3>Neuroticisum</h3>
+
+	<p>&emsp;Neuroticism (N) is the personality trait of being emotional. High scorers tend to have high emotional reactions to stress. They may perceive 
+	situations as threatening and be more likely to feel moody, depressed, angry, anxious, and experience mood swing. Low scorers tend to be more 
+	emotionally stable and less reactive to stress.</p>
+
+	<h3>Openness to Experience </h3>
+
+	<p>&emsp;Openness to Experience (O) is the personality trait of seeking new experiences and intellectual pursuits. High scores may day dream a lot (enjoy 
+	thinking about new and different things). Low scorers tend to be very down to earth (more of a "hear and now" thinker). Consequently, it is 
+	thought that people with higher scores might be more creative, flexible, curious, and adventurous, whereas people with lower score might tend to 
+	enjoy routines, predictability, and structure</p>
+	
+   </p><input  id="btn1" type="button" onclick="exist()" value="Exist">
+
+   </div>
+	 <center><h2>Enter Your Job Information</h2> 
+	<form action="JobCreate" method="post">
+<table>
+<tr><td>Company Name:</td><td><input type="text" name="name"></td></tr>
+<tr><td>Company Email</td><td><input type="text" name="email"></td></tr>
+<tr><td>Company Address</td><td><input type="text" name="add"></td></tr>
+<tr><td>Phone Number:</td><td><input type="text" name="phno"></td></tr>
+<tr><td>How many person that you looking for:</td><td><input type="text" name="person"></td></tr>
+<tr><td>Positions :</td><td><input type="text" name="position"></td></tr>
+<tr><td>Priority Persionality:</td><td>
+		<select name="personal">
+	        <option name="personal" value="Opnness" id="Open">Openness</option>
+	        <option name="personal" value="Conscientiousness" id="Con">Conscientiousness</option>
+	        <option name="personal" value="Extroversion" id="Extro">Extroversion</option>
+	        <option name="personal" value="Agreeavleness" id="Agree">Agreeableness</option>
+	        <option name="personal" value="Neuroticism" id="Neuro">Neuroticism</option>
+    	</select> 
+    </td></tr>
+
+<tr><td>Require Skill:</td><td><input type="text" name="skill"></td></tr>
+<tr><td>Applicable Deadline</td><td><input type="date" name="date"></td></tr>
+
+<tr><th><input type="reset" value="Clear"></th>
+<th><input type="Submit" value="Insert"></th>
+</table>
+<script>
+ 
+ 
+ function about(){
+	
+    var about=document.getElementById("about");
+	about.style.visibility="visible";
+	
+	var h3=document.getElementById("h3");
+	var btn=document.getElementById("btn");
+	h3.style.visibility="hidden"
+	btn.style.visibility="hidden";
+ }
+ 
+function exist(){
+	var about=document.getElementById("about");
+	about.style.visibility="hidden";
+		
+	var h3=document.getElementById("h3");
+	var btn=document.getElementById("btn");
+	h3.style.visibility="visible";
+	btn.style.visibility="visible";
+ }
+
+</script>
+</body>
+</html>

@@ -5,10 +5,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/nav.css">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/Dashboard.css">
 </head>
+<style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+       
+    }
+    
+    /* Make the table body scrollable */
+    tbody {
+        width: 95%;
+        display: inline-block;
+        flex-direction: column;
+        height: 25vh; 
+        overflow-y: auto;
+    }
+    thead {
+        border: 1px solid black;
+        display: block;
+        width: 100%;
+        table-layout: fixed;
+    }
+    /* Style the table header */
+    th {
+        background-color: rebeccapurple;
+        color: white;
+    }
+    
+    /* Ensure table cells have a fixed width */
+    th, td {
+        width: calc(100% / 6);/* Adjust based on the number of columns */
+        padding: 8px;
+        text-align: center;
+        border: 1px solid #ddd;
+        word-wrap: break-word;
+    }
+    tr{
+        width: 100%;
+        height: 5vh;
+    }
+    
+    #id{
+	width: 7.5%;
+}
+#Look{
+	width: 7.5%;
+}
+
+#Position{
+	width: 20%;
+}
+#require-skill{
+	width: 20%;
+}
+#EmployeeRequired{
+	width: 10%;
+}
+#Personality{
+	width: 15%;
+}
+#TotalApply{
+	width: 10%;
+}
+#DeadLine{
+    width: 10%;
+}
+
+    
+</style>
 <body>
 
     <body>
@@ -29,6 +95,12 @@
                         <span class="link-text">Post Job</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">
+                        <span class="ButtonLogo"><img src="../image/history.png" alt=""></span>
+                        <span class="link-text">History</span>
+                    </a>
+                </li>
 
             </ul>
         </nav>
@@ -42,8 +114,8 @@
                 </div>
                 <div class="input">
                     <div class="Icon">
-                        <div class="user-icon"></div>
-                        <div class="setting"></div>
+                        <div class="user-icon"><img src="../image/user.png" alt=""></div>
+                        <div class="setting"><img src="../image/settings.png" alt=""></div>
                     </div>
 
                 </div>
@@ -66,12 +138,35 @@
                     <span class="ButtonLogo"><img src="../image/jobCount.png" alt=""></span>
                 </div>
                </div>
-              <div class="container-box">
-                <div class="top-con"> Company name</div>
-                
-              
-               
-              </div>
+               <div class="comName">Hello world</div>
+               <table>
+				<thead>
+					<tr style="background-color: rebeccapurple;">
+						<th id="id">Job ID</th>
+						<th id="Position">Position</th>
+						<th id="require-skill">require-skill</th>
+						<th id="EmployeeRequired">Employee required</th>
+						<th id="Personality">Personality</th>
+						<th id="TotalApply">Total apply</th>
+                        <th id="DeadLine">DeadLine</th>
+                        <th id="Look"></th>
+					</tr>
+				</thead>
+                <tr>
+                    <th id="id">Job ID</th>
+                    <th id="Position">Position</th>
+                    <th id="require-skill">require-skill</th>
+                    <th id="EmployeeRequired">Employee required</th>
+                    <th id="Personality">Personality</th>
+                    <th id="TotalApply">Total apply</th>
+                    <th id="DeadLine">DeadLine</th>
+                    <th id="Look"></th>
+                </tr>
+				<tbody>
+					
+				</tbody>
+			</table>
+
             </div>
            
 
