@@ -1,84 +1,95 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../css/Dashboard.css">
-</head>
-<style>
-      table {
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" type="text/css" href="../css/Dashboard.css">
+
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <style>/* Ensure the table occupies the full width of its container */
+    
+
+.navbar {
+	position: fixed;
+	}
+    table {
         width: 100%;
-        border-collapse: collapse;
+        border-collapse:collapse;
        
     }
     
-    /* Make the table body scrollable */
     tbody {
-        width: 95%;
+        width: 100%;
         display: inline-block;
         flex-direction: column;
-        height: 25vh; 
+        height: 50vh; 
         overflow-y: auto;
+        border: 1px solid red;
     }
     thead {
-        border: 1px solid black;
         display: block;
         width: 100%;
         table-layout: fixed;
     }
-    /* Style the table header */
-    th {
-        background-color: rebeccapurple;
-        color: white;
-    }
-    
-    /* Ensure table cells have a fixed width */
+
     th, td {
-        width: calc(100% / 6);/* Adjust based on the number of columns */
+        width: calc(100% / 6);
         padding: 8px;
         text-align: center;
-        border: 1px solid #ddd;
+        border-bottom: 1px solid black;
         word-wrap: break-word;
     }
     tr{
         width: 100%;
-        height: 5vh;
+        height: 5.5vh;
     }
     
-    #id{
-	width: 7.5%;
-}
-#Look{
-	width: 7.5%;
-}
-
-#Position{
-	width: 20%;
-}
-#require-skill{
-	width: 20%;
-}
-#EmployeeRequired{
-	width: 10%;
-}
-#Personality{
-	width: 15%;
-}
-#TotalApply{
-	width: 10%;
-}
-#DeadLine{
-    width: 10%;
+.headText{
+	font-size: 1.6em;
+	letter-spacing: 2px;
+	font-weight: bold;
 }
 
+.nav-link {
+	width: 100%;
+	border: 1px solid blue;
+	border-radius: 7px;
+	padding: 8px 15px;
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	box-sizing: border-box;
+	/* Include padding and border in the element's total width */
+}
+
+
+/* For Chrome, Safari, and Opera */
+::-webkit-scrollbar {
+    width: 0px; 
+}
+
+/* For Firefox */
+::-moz-scrollbar {
+    width: 5px;
+}
+
+/* For Internet Explorer and Edge */
+::-ms-scrollbar {
+    width: 5px; 
+}
+
+  
     
 </style>
-<body>
+</head>
 
-    <body>
-        <nav class="navbar">
+<body>
+	 <nav class="navbar">
             <ul class="navbar-nav">
                 <li class="logo">
                     InternDoor
@@ -90,39 +101,64 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../html/CompanyJobCreate.html" class="nav-link">
+                    <a href="CompanyJobCreate.jsp" class="nav-link">
                         <span class="ButtonLogo"><img src="../image/postAJob.png" alt=""></span>
                         <span class="link-text">Post Job</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <span class="ButtonLogo"><img src="../image/history.png" alt=""></span>
-                        <span class="link-text">History</span>
-                    </a>
-                </li>
+            <li class="nav-item">
+                <a href="" class="nav-link">
+                    <span class="ButtonLogo"><img src="../image/history.png" alt=""></span>
+                    <span class="link-text">History</span>
+                </a>
+            </li>
 
             </ul>
         </nav>
 
-        <main>
-            <header>
+	<main>  
+	<header>
                 <div class="page-text">
                     <span class="page">Pages</span>
                     <span> / Dashboard</span>
                     <span class="dash">Dashboard</span>
                 </div>
-                <div class="input">
+                 <div class="input">
                     <div class="Icon">
-                        <div class="user-icon"><img src="../image/user.png" alt=""></div>
-                        <div class="setting"><img src="../image/settings.png" alt=""></div>
-                    </div>
+                        <button type="button" class="user-icon rounded-3"  data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"><img src="../image/user.png" class="border border-less" alt="" ></button>
+                        <button class="setting rounded-3" ><img src="../image/settings.png" alt="" class="border border-less"></button>
+                        <div class="offcanvas offcanvas-end fix" tabindex="1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                            <div class="offcanvas-header">
+                              <h5 class="offcanvas-title text-uppercase fw-bolder" id="offcanvasExampleLabel" style="letter-spacing: 1px; ">InternDoor</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            </div>
+                            <div  class="offcanvas-body d-flex flex-column align-items-center gap-5" >
+                                <div style="width: 100px; height: 100px;" class="border border-black d-flex justify-content-center align-items-center rounded-circle"><img src="../image/user.png" width="80%" height="80%" class="object-fit-cover"></div>
+                                <table class="table table-borderless " style="height: 200px; font-size: 1.1rem;">
+                                    <tr>
+                                        <td class="fw-bold">Companyy Name</td>
+                                        <td >Khun Thi Han</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">Email</td>
+                                        <td>khunthihan@gmail.com</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">Phone</td>
+                                        <td>Tgi</td>
+                                    </tr>
+                                </table>
 
+                            </div>
+                            <div class="d-flex justify-content-center align-items-center"> <button type="button" style="width: 80%; margin-bottom: 30px;" class="btn btn-primary">LogOut</button></div>
+                           
+                        </div>
+                    </div>
                 </div>
 
             </header>
-            <div class="main">
-               <div class="box com">
+		<div class="main">
+			   <div class="box com">
                 <div class="numOfStuShow">
                     <div class="stuShow">
                         <span class="text">Number Of Students</span>
@@ -138,41 +174,52 @@
                     <span class="ButtonLogo"><img src="../image/jobCount.png" alt=""></span>
                 </div>
                </div>
-               <div class="comName">Hello world</div>
-               <table>
+
+                    <div class="comName">Hello world</div>
+			<table>
 				<thead>
-					<tr style="background-color: rebeccapurple;">
-						<th id="id">Job ID</th>
-						<th id="Position">Position</th>
-						<th id="require-skill">require-skill</th>
-						<th id="EmployeeRequired">Employee required</th>
-						<th id="Personality">Personality</th>
-						<th id="TotalApply">Total apply</th>
-                        <th id="DeadLine">DeadLine</th>
-                        <th id="Look"></th>
+							<tr style="background-color: rebeccapurple;" >
+						<th style="width: 5%;">No</th>
+                        <th style="width: 20%;">Position</th>
+                        <th style="width: 20%;">Require Skill</th>
+                        <th style="width: 20%;">Require Personality</th>
+                        <th style="width: 10%;">Total Vacancy</th>
+                        <th style="width: 10%;">DeadLine</th>
+                        <th style="width: 10%;">Total Student Applied</th>
+                        <th style="width: 10%;">Check</th>
 					</tr>
 				</thead>
-                <tr>
-                    <th id="id">Job ID</th>
-                    <th id="Position">Position</th>
-                    <th id="require-skill">require-skill</th>
-                    <th id="EmployeeRequired">Employee required</th>
-                    <th id="Personality">Personality</th>
-                    <th id="TotalApply">Total apply</th>
-                    <th id="DeadLine">DeadLine</th>
-                    <th id="Look"></th>
-                </tr>
 				<tbody>
-					
+                    <tr style="background-color: rebeccapurple;" >
+						<th style="width: 5%;">No</th>
+                        <th style="width: 20%;">Position</th>
+                        <th style="width: 20%;">Require Skill</th>
+                        <th style="width: 20%;">Require Personality</th>
+                        <th style="width: 10%;">Total Vacancy</th>
+                        <th style="width: 10%;">DeadLine</th>
+                        <th style="width: 10%;">Total Student Applied</th>
+                        <th style="width: 10%;">Check</th>
+					</tr>
+                    <tr style="background-color: rebeccapurple;" >
+						<th style="width: 5%;">No</th>
+                        <th style="width: 20%;">Position</th>
+                        <th style="width: 20%;">Require Skill</th>
+                        <th style="width: 20%;">Require Personality</th>
+                        <th style="width: 10%;">Total Vacancy</th>
+                        <th style="width: 10%;">DeadLine</th>
+                        <th style="width: 10%;">Total Student Applied</th>
+                        <th style="width: 10%;">Check</th>
+					</tr>
 				</tbody>
 			</table>
 
-            </div>
-           
+		</div>
 
-        </main>
-    </body>
 
+	</main>
+	 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
 </body>
+
 
 </html>
