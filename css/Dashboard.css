@@ -163,11 +163,6 @@ header>.input>input {
 .Icon>.user-icon {
 	gap: 5px;
 }
-
-.Icon>.setting {
-
-}
-
 main {
 	position: absolute;
 	top: 0;
@@ -228,36 +223,17 @@ main {
 	justify-content: space-between;
 }
 
-.text {
-	font-size: 16px;
+/* For Chrome, Safari, and Opera */
+::-webkit-scrollbar {
+    width: 0px; /* Adjust the width as needed */
 }
-.number {
-	font-size: 22px;
+
+/* For Firefox */
+::-moz-scrollbar {
+    width: 5px; /* Adjust the width as needed */
 }
-.comName{
-	font-size: 2em;
-}
-#id{
-	width: 5%;
-}
-#Position{
-	width: 15%;
-}
-#require-skill{
-	width: 15%;
-}
-#EmployeeRequired{
-	width: 10%;
-}
-#Personality{
-	width: 15%;
-}
-#TotalApply{
-	width: 10%;
-}
-#Look{
-	width: 7%;
-}
-#cname{
-	width: 15%;
+
+/* For Internet Explorer and Edge */
+::-ms-scrollbar {
+    width: 5px; /* Adjust the width as needed */
 }

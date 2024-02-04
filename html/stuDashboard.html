@@ -7,21 +7,38 @@
     <title>Document</title>
     <link rel="stylesheet" href="../css/Dashboard.css">
 </head>
-<style>
-    #id{
-        width: 5%;
+<style>/* Ensure the table occupies the full width of its container */
+    table {
+        width: 100%;
+        border-collapse:collapse;
+       
     }
-    #cname{
-        width: 25%;
+    
+    tbody {
+        width: 100%;
+        display: inline-block;
+        flex-direction: column;
+        height: 24vh; 
+        overflow-y: auto;
+        border: 1px solid red;
     }
-    #Position{
-        width: 25%;
+    thead {
+        display: block;
+        width: 100%;
+        table-layout: fixed;
     }
-    #require-skill{
-        width: 25%;
+
+    th, td {
+        width: calc(100% / 6);
+        padding: 8px;
+        text-align: center;
+        border-left: 1px solid red;
+        border-bottom: 1px solid red;
+        word-wrap: break-word;
     }
-    #deadline{
-        width: 10%;
+    tr{
+        width: 100%;
+        height: 5.5vh;
     }
 </style>
 <body>
@@ -78,13 +95,14 @@
                 <table>
                     <thead>
                         <tr style="background-color: rebeccapurple;">
-                            <th id="id">Job ID</th>
-                            <th id="cname">Company Name</th>
-                            <th id="Position">Position</th>
-                            <th id="require-skill">require-skill</th>
-                            <th id="DeadLine">DeadLine</th>
-                            <th id="Look"></th>
+                            <th style="width: 10%;">Job ID</th>
+                            <th style="width: 25%;">Company Name</th>
+                            <th style="width: 25%;">Position</th>
+                            <th style="width: 25%;">require-skill</th>
+                            <th style="width: 15%;">DeadLine</th>
+                            <th style="width: 10%;">Check</th>
                         </tr>
+                      
                     </thead>
                     <tbody>
                         
