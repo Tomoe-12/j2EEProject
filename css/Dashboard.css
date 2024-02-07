@@ -237,3 +237,13 @@ main {
 ::-ms-scrollbar {
     width: 5px; /* Adjust the width as needed */
 }
+
+.text {
+	font-size: 16px;
+}
+.number {
+	font-size: 22px;
+}
+.comName{
+	font-size: 2em;
+}
