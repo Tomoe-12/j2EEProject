@@ -8,6 +8,70 @@
     <link rel="stylesheet" href="../css/Dashboard.css">
 </head>
 <style>/* Ensure the table occupies the full width of its container */
+     
+.box > .numOfStuShow, .numOfJobOffer, .numOfCom {
+	width: 20%;
+	height: 100%;
+	padding-left: 10px;
+	border: 2px solid black;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-radius: 10px;
+}
+
+.navbar {
+	position: fixed;
+	left: 0;
+	width: 13%;
+	height: 100vh;
+	border: 1px solid red;
+	padding: 15px;
+}
+.navbar-nav {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100%;
+	margin-top: 15px;
+}
+ 
+    
+.navbar-nav>.nav-item {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 15px;
+}
+    
+.nav-link {
+	width: 100%;
+	border: 1px solid blue;
+	border-radius: 7px;
+	padding: 8px 15px;
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	box-sizing: border-box;
+	/* Include padding and border in the element's total width */
+}
+
+.link-text {
+	font-size: 18px;
+}
+    
+    
+   /* dont'nt do css from here */ 
+    
+    
+
+.navbar {
+	position: fixed;
+	}
     table {
         width: 100%;
         border-collapse:collapse;
@@ -18,9 +82,8 @@
         width: 100%;
         display: inline-block;
         flex-direction: column;
-        height: 24vh; 
+        height: 22vh; 
         overflow-y: auto;
-        border: 1px solid red;
     }
     thead {
         display: block;
@@ -32,14 +95,61 @@
         width: calc(100% / 6);
         padding: 8px;
         text-align: center;
-        border-left: 1px solid red;
-        border-bottom: 1px solid red;
+        border-bottom: 1px solid black;
         word-wrap: break-word;
     }
     tr{
         width: 100%;
         height: 5.5vh;
     }
+    
+.headText{
+	font-size: 1.6em;
+	letter-spacing: 2px;
+	font-weight: bold;
+}
+
+.nav-link {
+	width: 100%;
+	border: 1px solid blue;
+	border-radius: 7px;
+	padding: 8px 15px;
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	box-sizing: border-box;
+}
+
+
+ 
+::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+}
+
+/* For Firefox */
+::-moz-scrollbar {
+    width: 8px;
+}
+
+/* For Internet Explorer and Edge */
+::-ms-scrollbar {
+    width: 8px; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar handle */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar handle on hover */
+}
+.box {
+	min-height: 8vh;
+}
+
+
     
 </style>
 <body>
@@ -53,7 +163,13 @@
                 <li class="nav-item">
                     <a class="nav-link">
                         <span class="ButtonLogo"><img src="../image/homeoffice.png" alt=""></span>
-                        <span class="link-text">Offering Job</span>
+                        <span class="link-text">Home</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <span class="ButtonLogo"><img src="../image/pending.png" alt=""></span>
+                        <span class="link-text">Pending Job</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -74,12 +190,6 @@
                         <span class="link-text">History</span>
                     </a>
                 </li>
-            </li>
-            <li class="nav-item">
-                <a href="" class="nav-link">
-                    <span class="ButtonLogo"><img src="../image/history.png" alt=""></span>
-                    <span class="link-text">History</span>
-                </a>
             </li>
 
             </ul>

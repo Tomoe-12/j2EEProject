@@ -1,0 +1,276 @@
+<!-- <%@page import="java.io.*"%>
+<%@page import="java.sql.*"%>
+<%@page import="dao.*"%>
+<%@page import="controller.*"%>
+<%@page import="java.util.*"%>
+<%@page import="model.*"%>
+<%@page import="jakarta.servlet.*" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/DAshboard.css">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+ 
+</head>
+<style>/* Ensure the table occupies the full width of its container */
+ 
+ 
+.box > .numOfStuShow, .numOfJobOffer, .numOfCom {
+	width: 20%;
+	height: 100%;
+	padding-left: 10px;
+	border: 2px solid black;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-radius: 10px;
+}
+
+.navbar {
+	position: fixed;
+	left: 0;
+	width: 13%;
+	height: 100vh;
+	border: 1px solid red;
+	padding: 15px;
+}
+.navbar-nav {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100%;
+	margin-top: 15px;
+}
+ 
+    
+.navbar-nav>.nav-item {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 15px;
+}
+    
+.nav-link {
+	width: 100%;
+	border: 1px solid blue;
+	border-radius: 7px;
+	padding: 8px 15px;
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	box-sizing: border-box;
+	/* Include padding and border in the element's total width */
+}
+
+.link-text {
+	font-size: 18px;
+}
+    
+    
+   /* dont'nt do css from here */ 
+    
+    
+
+.navbar {
+	position: fixed;
+	}
+    table {
+        width: 100%;
+        border-collapse:collapse;
+       
+    }
+    
+    tbody {
+        width: 100%;
+        display: inline-block;
+        flex-direction: column;
+        overflow-y: auto;
+    }
+    thead {
+        display: block;
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    th, td {
+        width: calc(100% / 6);
+        padding: 8px;
+        text-align: center;
+        border-bottom: 1px solid black;
+        word-wrap: break-word;
+    }
+    tr{
+        width: 100%;
+        height: 5.5vh;
+    }
+    
+.headText{
+	font-size: 1.6em;
+	letter-spacing: 2px;
+	font-weight: bold;
+}
+
+.nav-link {
+	width: 100%;
+	border: 1px solid blue;
+	border-radius: 7px;
+	padding: 8px 15px;
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	box-sizing: border-box;
+}
+
+
+ 
+::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+}
+
+/* For Firefox */
+::-moz-scrollbar {
+    width: 8px;
+}
+
+/* For Internet Explorer and Edge */
+::-ms-scrollbar {
+    width: 8px; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar handle */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar handle on hover */
+}
+.box {
+	min-height: 8vh;
+}
+/* 
+
+    <%
+    	// taking all jobs
+    	Company_job_dao cmpJobs = new Company_job_dao();
+    	List<CompanyJob> jobList = cmpJobs.getAllJobs();
+    	// taking all company Side user
+    	CompanyDao cmp = new CompanyDao();
+    	List<Company> cmpList = cmp.getAllCom();
+    	// taking all students
+    	StudentDao stu = new StudentDao();
+    	List<Student> stuList = stu.getAllStu();
+    	//header count 
+    	givingNumForAllDashboard count = new givingNumForAllDashboard();
+    	int stuCount  =  count.total("student");
+    	int comCount  = count.total("company");
+    	int comjobCount = count.total("company_job");
+    	int adminAcceptOrNotCount = count.total("adminAccept");
+    	// get count for each company and companyjob
+    	givingNumForAllDashboard total = new givingNumForAllDashboard();
+    	
+    	
+      %> */
+    
+</style>
+<body>
+
+        <nav class="navbar">
+            <ul class="navbar-nav">
+                <li class="logo">
+                    InternDoor
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <span class="ButtonLogo"><img src="../image/homeoffice.png" alt=""></span>
+                        <span class="link-text">Home</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <span class="ButtonLogo"><img src="../image/pending.png" alt=""></span>
+                        <span class="link-text">Pending Job</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">
+                        <span class="ButtonLogo"><img src="../image/company.png" alt=""></span>
+                        <span class="link-text">Company</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">
+                        <span class="ButtonLogo"><img src="../image/studentCount.png" alt=""></span>
+                        <span class="link-text">Student</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">
+                        <span class="ButtonLogo"><img src="../image/postAJob.png" alt=""></span>
+                        <span class="link-text">History</span>
+                    </a>
+                </li>
+            </li>
+
+            </ul>
+        </nav>
+        <main>
+               
+            <div class="main">
+             
+            <span class="headText">Company</span>
+          	 <div class="border border-black rounded">
+          		  <table>
+				<thead>
+				 <tr class="bg-danger border border-0 rounded " >
+						<th style="width: 5%;">No</th>
+                        <th style="width: 15%;">Company Name</th>
+                        <th style="width: 18%;">Email</th>
+                        <th style="width: 20%;">Address</th>
+                        <th style="width: 15%;">Phone</th>
+                        <th style="width: 10%;">Total Offer Job</th>
+                        <th style="width: 10%;">Total Student Applied</th>
+                        <th style="width: 5%;">Check</th>
+					</tr>
+				</thead>
+               
+				<tbody>
+                   <!-- <%for(Company c :  cmpList){ %>
+                   <% int cmpId = c.getCompany_id();%>
+                   		<tr  >
+						<th style="width: 5%;">No</th>
+                        <th style="width: 15%;"><%=c.getCompany_name()%></th>
+                        <th style="width: 18%;"><%=c.getCompany_email() %></th>
+                        <th style="width: 20%;"><%=c.getCompany_address() %></th>
+                        <th style="width: 15%;"><%=c.getCompany_phone() %></th>
+                        <th style="width: 10%;"><%=c.getCompany_phone() %></th>
+                        <th style="width: 10%;"><%=total.countingForEachComAndComJob(cmpId, "company") %></th>
+                        <th style="width: 5%;">Check</th>
+					</tr>
+                   <%} %> -->
+				</tbody>
+               
+			</table>
+          	</div>
+        </div>
+        </main>
+         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    </body>
+
+
+</html>
