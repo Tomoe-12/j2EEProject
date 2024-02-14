@@ -1,201 +1,168 @@
+<!-- <%@page import="java.io.*"%>
+<%@page import="java.sql.*"%>
+<%@page import="dao.*"%>
+<%@page import="controller.*"%>
+<%@page import="java.util.*"%>
+<%@page import="model.*"%>
+<%@page import="jakarta.servlet.*" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%> -->
 
 <!DOCTYPE html>
 <html lang="en">
-<%
-	Company_job_dao cmpJob = new Company_job_dao();
-	//int i = (int)request.getAttribute("cmpid");
-	List<CompanyJob> clist = cmpJob.getAllJobsForSpecificCompany(1);
+    
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/comCheckStuInfo.css">
+<!-- <%
+	System.out.println("entering detaile form");
+	HttpSession ses = request.getSession();
+	int cmpid = (int)ses.getAttribute("cmpid");
+	String cmpJobId =  request.getParameter("cmpJobId");
+	int studentId = Integer.parseInt(request.getParameter("student_id"));
+	 String imgFilename = "";
+	 String name = "";
+	 String address = "";
+	 String phno = "";
+	 String rollno = "";
+	 String uni = "";
+	 String position = "";
+	 String applyTime = "";
+	
+	String company_requirement_position = request.getParameter("position"); 
+	
+        // detail student's information and tdeir job info
+        applicantDao app = new applicantDao();
+        ResultSet rs = app.showStuDetail(studentId, cmpJobId);
+        
+        // personality for each student
+        PersonalityDao per = new PersonalityDao();
+        List<Personality> perInfo = per.getPersonalities(cmpJobId);
+       
+        		
+       while(rs.next()){
+    	   System.out.println("entering rs ");
+    	   name = rs.getString("student_name");
+    	   address = rs.getString("student_address");
+    	   phno = rs.getString("student_phone");
+    	   rollno = rs.getString("student_rollno");
+    	   uni = rs.getString("student_university");
+    	   imgFilename = rs.getString("CV_Form");
+    	   position = rs.getString("company_requirement_position");
+    	   applyTime = rs.getString("student_apply_time");
+       }
+        		
+%> -->
 
-%>
-<style>
+<head>  
+
+    <style>
+</style>
+</head>  
+<body>  
+    <div class="header " style="margin-bottom: 40px; " >
+     <div  class="back d-flex  align-items-center ">
+      <a href="" class="nav-link d-flex justify-content-center align-items-center">
+        <span class="ButtonLogo"><img style="width: 40px;" src="image/back.png" alt=""></span>
+    </a>
+     </div>
+       <div class="d-flex justify-content-center" >
+        <h2 style="letter-spacing: 1px;">Student Profile</h2>
+       </div>
+    </div>
+    <div class=" d-flex justify-content-around align-items-center border" style="margin-bottom: 30px;">    
+	<div class="border border-danger d-flex rounded-3" style="padding: 25px;">
+		<table>
+
+            	<tr><td>Name</td><td><%=name%></td></tr>
+                <tr><td>Address</td><td><%= address %></td></tr>
+                <tr><td>Phone</td><td><%=phno%></td></tr>
+                <tr><td>Roll no</td><td><%= rollno %></td></tr>
+                <tr><td>University</td><td><%=uni%></td></tr>
+              
+                <tr><td>Position</td><td><%= position %></td></tr>
+                <tr><td>Apply time</td><td><%= applyTime %></td></tr>
+                <tr style="height: 50px;"></tr>
+                   <!-- <% for(Personality p : perInfo){ %> -->
+                    <tr>
+                        <td style=" border: 1px solid black;">Openess</td>
+                        <td style=" border: 1px solid black;"><%= p.getOpenness() %></td>
+                    </tr>
+                    <tr>
+                        <td style=" border: 1px solid black;">Conscientiousness</td>
+                        <td style=" border: 1px solid black;"> <%= p.getConscientiousness() %></td>
+                    </tr>  
+                    <tr>
+                        <td style=" border: 1px solid black;">Extroversion</td>
+                        <td style=" border: 1px solid black;"><%= p.getExtroversion()%></td>
+                    </tr>  
+                        <td style=" border: 1px solid black;">Agreeableness</td>
+                        <td style=" border: 1px solid black;"><%= p.getAgreeableness() %></td>
+                    </tr>
+                    <tr>
+                        <td style=" border: 1px solid black;">Neuroticism</td>
+                        <td style=" border: 1px solid black;"><%= p.getNeuroticism()%></td>
+                    </tr>
+                             <!-- <%} %> -->
+           	     	
+	</table>
+	</div >
+       
+	    <div id="myImg" style="width: 400px; height: 55vh;" >
+            <div style="width: 100%; height: 100%;"  class="object-fit-cover  border border-danger rounded-3 ">
+                <img class=" rounded-3" width="100%" height="100%" src="image/user.png" alt="">
+            </div>
+	    </div>
+        <div id="myModal" class="modal">
+            <div id="caption"><h3>CV Form</h3></div>
+            <span class="close">&times;</span>
+            <img class="modal-content"  src="image/user.png">
+        </div>
+    </div>
+        
+    <div class="accecptOrDecline d-flex border align-items-center justify-content-center " >
+        <form  action="comDecideStuForm" metdod="post">     
+        <input type="hidden" name="position" value="<%=company_requirement_position %>">         		   
+        <input type="hidden" name="cmpJobId" value="<%=cmpJobId%>">         		
+        <input type="hidden" name="student_id" value="<%=studentId%>">
 
 
-#nav-link {
-	width: 100%;
-	border: 1px solid blue;
-	border-radius: 7px;
-	padding: 8px 15px;
-	display: flex;
-	align-items: center;
-	text-decoration: none;
-	box-sizing: border-box;
-	/* Include padding and border in the element's total width */
+        <button type="submit" name="aod" value="Deny"  class="btn btn-danger btn-lg">Deny</button>	
+        <button type="button"  name="aod" value="Accept" class="btn btn-success btn-lg">Accept</button>
+        		   
+    </form></div>
+    <div class="footer border border-danger " >
+
+    </div>
+	
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>	
+     <script>
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById("myImg");
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+img.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = this.src;
+  captionText.innerHTML = this.alt;
 }
 
-      table {
-        width: 100%;
-        border-collapse:collapse;
-       
-    }
-    
-    tbody {
-        width: 100%;
-        display: inline-block;
-        flex-direction: column;
-        height: 60vh; 
-        overflow-y: auto;
-        border: 1px solid red;
-    }
-    thead {
-        display: block;
-        width: 100%;
-        table-layout: fixed;
-    }
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
 
-    th, td {
-        width: calc(100%);
-        padding: 8px;
-        text-align: center;
-        border-left: 1px solid red;
-        border-bottom: 1px solid red;
-        word-wrap: break-word;
-    }
-    tr{
-        width: 100%;
-        height: 5.5vh;
-    }
-    
-    
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() { 
+  modal.style.display = "none";
+}
 
-    
-</style>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  
-<link rel="stylesheet" type="text/css" href="css/Dashboard.css">
-
-<style type="text/css">
-</style>
-
-</head>
-
-<body>
-  <nav class="navbar">
-            <ul class="navbar-nav">
-                <li class="logo">
-                    InternDoor
-                </li>
-                <li class="nav-item">
-                    <a id="nav-link">
-                        <span class="ButtonLogo"><img src="image/homeoffice.png" alt=""></span>
-                        <span class="link-text">Offering Job</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="CompanyJobCreate.jsp" id="nav-link">
-                        <span class="ButtonLogo"><img src="image/postAJob.png" alt=""></span>
-                        <span class="link-text">Post Job</span>
-                    </a>
-                </li>
-            <li class="nav-item">
-                <a href="" id="nav-link">
-                    <span class="ButtonLogo"><img src="image/history.png" alt=""></span>
-                    <span class="link-text">History</span>
-                </a>
-            </li>
-
-            </ul>
-        </nav>
-
-	<main>  
-	     <header>
-                <div class="page-text">
-                    <span class="page">Pages</span>
-                    <span> / Dashboard</span>
-                    <span class="dash">Dashboard</span>
-                </div>
-                <div class="input">
-                    <div class="Icon">
-                        <button type="button" class="user-icon" class="" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"><img src="image/user.png" alt="" ></button>
-                        <button class="setting"><img src="image/settings.png" alt=""></button>
-                        <div class="offcanvas offcanvas-end fix" tabindex="1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-                            <div class="offcanvas-header">
-                              <h5 class="offcanvas-title text-uppercase fw-bolder" id="offcanvasExampleLabel" style="letter-spacing: 1px; ">InternDoor</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                            </div>
-                            <div  class="offcanvas-body d-flex flex-column align-items-center gap-5" >
-                                <div style="width: 100px; height: 100px;" class="border border-black d-flex justify-content-center align-items-center rounded-circle"><img src="image/user.png" width="80%" height="80%" class="object-fit-cover"></div>
-                                <table class="table table-borderless " style="height: 200px; font-size: 1.1rem;">
-                                    <tr>
-                                        <td class="fw-bold">Companyy Name</td>
-                                        <td >Khun Thi Han</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-bold">Email</td>
-                                        <td>khunthihan@gmail.com</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-bold">Phone</td>
-                                        <td>Tgi</td>
-                                    </tr>
-                                </table>
-
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-
-            </header>
-		<div class="main">
-			   <div class="box com">
-                <div class="numOfStuShow">
-                    <div class="stuShow">
-                        <span class="text">Number Of Students</span>
-                        <span class="number">123</span>
-                    </div>
-                    <span class="ButtonLogo"><img src="image/studentCount.png" alt=""></span>
-                    </div>
-                <div class="numOfJobOffer">
-                    <div class="stuShow">
-                        <span class="text">Number Of Jobs</span>
-                        <span class="number">123</span>
-                    </div>
-                    <span class="ButtonLogo"><img src="image/jobCount.png" alt=""></span>
-                </div>
-               </div>
-
-                    <div class="comName">Hello world</div>
-			<table>
-				<thead>
-					 <tr style="background-color: rebeccapurple;">
-						<th style="width: 5%;">No</th>
-                        <th style="width: 15%;">Position</th>
-                        <th style="width: 15%;">Require skill</th>
-                        <th style="width: 15%;">Require Personality</th>
-                        <th style="width: 10%;">Total Vacancy</th>
-                        <th style="width: 10%;">DeadLine</th>
-                        <th style="width: 10%;">Total Student Applied</th>
-                        <th style="width: 7%;">Check</th>
-					</tr>
-				</thead>
-				<tbody>
-                    <tr style="background-color: rebeccapurple;">
-						<th style="width: 5%;">No</th>
-                        <th style="width: 15%;">Position</th>
-                        <th style="width: 15%;">Require skill</th>
-                        <th style="width: 15%;">Require Personality</th>
-                        <th style="width: 10%;">Total Vacancy</th>
-                        <th style="width: 10%;">DeadLine</th>
-                        <th style="width: 10%;">Total Student Applied</th>
-                        <th style="width: 7%;">Check</th>
-					</tr>
-						
-					
-				</tbody>
-			</table>2b27d97 
-
-		</div>
-
-
-	</main>
-	 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
-	
+     </script>		
 </body>
 
-
 </html>
+
+
+
+

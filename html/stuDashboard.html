@@ -1,8 +1,77 @@
-
+<!-- <%@page import="java.io.*"%>
+<%@page import="java.sql.*"%>
+<%@page import="dao.*"%>
+<%@page import="controller.*"%>
+<%@page import="java.util.*"%>
+<%@page import="model.*"%>
+<%@page import="jakarta.servlet.*" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%> -->
 <!DOCTYPE html>
 <html lang="en">
+    
+<link rel="stylesheet" type="text/css" href="../css/Dashboard.css">
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  
+    
 
 <style>/* Ensure the table occupies the full width of its container */
+    
+   
+.box > .numOfStuShow, .numOfJobOffer, .numOfCom {
+	width: 20%;
+	height: 100%;
+	padding-left: 10px;
+	border: 2px solid black;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-radius: 10px;
+}
+ 
+.navbar {
+	position: fixed;
+	left: 0;
+	width: 13%;
+	height: 100vh;
+	border: 1px solid red;
+	padding: 15px;
+}
+  
+
+.navbar-nav {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100%;
+	margin-top: 15px;
+}   
+.navbar-nav > .nav-item {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 15px;
+}    
+.nav-link {
+	width: 100%;
+	border-radius: 7px;
+	padding: 8px 15px;
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	box-sizing: border-box;
+}
+.link-text {
+	font-size: 18px;
+}
+    
+    
+    /* don't do anything from here '*/
+    
     
 .navbar {
 	position: fixed;
@@ -19,7 +88,6 @@
         flex-direction: column;
         height: 60vh; 
         overflow-y: auto;
-        border: 1px solid red;
     }
     thead {
         display: block;
@@ -45,37 +113,70 @@
 	font-weight: bold;
 }
 
-/* For Chrome, Safari, and Opera */
 ::-webkit-scrollbar {
-    width: 0px; 
+    width: 8px; /* Width of the scrollbar */
 }
 
 /* For Firefox */
 ::-moz-scrollbar {
-    width: 5px;
+    width: 8px;
 }
 
 /* For Internet Explorer and Edge */
 ::-ms-scrollbar {
-    width: 5px; 
+    width: 8px; 
 }
-    
 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar handle */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar handle on hover */
+}
 </style>
 
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
-<link rel="stylesheet" type="text/css" href="../css/Dashboard.css">
+<!-- 
+<%
+	int id = (int)session.getAttribute("stuid");
+	//int id = 1;
+	//taking all jobs
+	Company_job_dao cmpJob = new Company_job_dao();
+	List<CompanyJob> joblist = cmpJob.getAllJobs();
+	//header count
+	givingNumForAllDashboard count = new givingNumForAllDashboard();
+	int comjobCount = count.total("company_job");
+	
+	// profile info
+	 StudentDao stuInfo = new StudentDao();
+	 String student_name = "";
+	 String student_email = "";
+	 String student_address = "";
+	 String student_phone = "";
+	 String student_rollno = "";
+	 String student_university="";
+	 List<Student> stuInfoList = stuInfo.getStuProfile(id);
+	 	for(Student info : stuInfoList ){
+	 		student_name = info.getStudent_name();
+	 		student_email = info.getStudent_email();
+	 		student_address = info.getStudent_address();
+	 		student_phone = info.getStudent_phone();
+	 		student_rollno = info.getStudent_rollno();
+	 		student_university = info.getStudent_rollno();
+	 	}
 
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  
+%> -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/Dashboard.css">
+   
 </head>
 <body>
 
@@ -84,12 +185,12 @@
                 <li class="logo">
                     InternDoor
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link">
-                        <span class="ButtonLogo"><img src="../image/homeoffice.png" alt=""></span>
-                        <span class="link-text">Offering Job</span>
-                    </a>
-                </li>
+                <li class="nav-item border rounded-3  shadow bg-body-tertiary ">
+                <a class="nav-link">
+                    <span class="ButtonLogo" style="background-image: linear-gradient(to bottom right ,skyblue,lightblue, violet) ;"><img style="background-image: linear-gradient(to bottom right ,skyblue,lightblue, violet) ;" src="../image/homeoffice.png" alt=""></span>
+                    <span class="link-text">Home</span>
+                </a>
+            </li>
                 
             <li class="nav-item">
                 <a href="" class="nav-link">
@@ -120,32 +221,33 @@
                                 <table class="table table-borderless " style="height: 200px; font-size: 1.1rem;">
                                     <tr>
                                         <td class="fw-bold">Username</td>
-                                        <td >Khun Thi Han</td>
+                                        <td ><%=student_name %></td>
                                     </tr>
                                     <tr>
                                         <td class="fw-bold">Email</td>
-                                        <td>khunthihan@gmail.com</td>
+                                        <td><%=student_email %></td>
                                     </tr>
                                     <tr>
                                         <td class="fw-bold">Phone</td>
-                                        <td>343242</td>
+                                        <td><%=student_phone %></td>
                                     </tr>
                                     <tr>
                                         <td class="fw-bold">Address</td>
-                                        <td>tgi</td>
+                                        <td><%=student_address %></td>
                                     </tr>
                                     <tr >
                                         <td class="fw-bold">Roll No</td>
-                                        <td>2Cs-21</td>
+                                        <td><%=student_rollno %></td>
                                     </tr>
                                     <tr>
                                         <td class="fw-bold">University</td>
-                                        <td>thi han universit</td>
+                                        <td><%=student_university %></td>
                                     </tr>
                                 </table>
+
                             </div>
-                           <div class="d-flex justify-content-center align-items-center"> <button type="button" style="width: 80%; margin-bottom: 30px;" class="btn btn-primary">LogOut</button></div>
-                            
+                              <div class="d-flex justify-content-center align-items-center"> <button type="button" style="width: 80%; margin-bottom: 30px;" class="btn btn-primary">LogOut</button></div>
+                           
                         </div>
                     </div>
                 </div>
@@ -155,42 +257,40 @@
                  <div class="numOfJobOffer">
                     <div class="stuShow">
                         <span class="text">Number Of Jobs</span>
-                        <span class="number">123</span>
+                        <span class="number"><%=comjobCount %></span>
                     </div>
                     <span class="ButtonLogo"><img src="../image/jobCount.png" alt=""></span>
               
                  </div>
                 </div>
-                <table id="stu">
+              <div class="border border-black rounded" >
+              	  <table id="stu">
                     <thead>
                            <tr style="background-color: rebeccapurple;">
                             <th style="width: 10%;">Job ID</th>
-                            <th style="width: 25%;">Company Name</th>
-                            <th style="width: 25%;">Position</th>
-                            <th style="width: 25%;">require-skill</th>
+                            <th style="width: 27.5%;">Company Name</th>
+                            <th style="width: 27.5%;">Position</th>
+                            <th style="width: 20%;">require-skill</th>
                             <th style="width: 15%;">DeadLine</th>
-                            <th style="width: 10%;">Check</th>
+                            <th style="width: 12%;">Check</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr style="background-color: rebeccapurple;">
-                            <th style="width: 10%;">Job ID</th>
-                            <th style="width: 25%;">Company Name</th>
-                            <th style="width: 25%;">Position</th>
-                            <th style="width: 25%;">require-skill</th>
-                            <th style="width: 15%;">DeadLine</th>
-                            <th style="width: 10%;">Check</th>
+                        <!-- Use JSTL forEach to iterate over jobList attribute -->
+					<!-- <% for(CompanyJob j : joblist){%> -->
+						
+						 <tr>
+                            <th style="width: 10%;">1</th>
+                            <th style="width: 27.5%;">Company Name</th>
+                            <th style="width: 27.5%;"><%=j.getCompany_requirement_position()%></th>
+                            <th style="width: 20%;"><%=j.getRequire_skill() %></th>
+                            <th style="width: 15%;"><%=j.getDeadLine() %></th>
+                            <th style="width: 12%;">Check</th>
                         </tr>
-                        <tr style="background-color: rebeccapurple;">
-                            <th style="width: 10%;">Job ID</th>
-                            <th style="width: 25%;">Company Name</th>
-                            <th style="width: 25%;">Position</th>
-                            <th style="width: 25%;">require-skill</th>
-                            <th style="width: 15%;">DeadLine</th>
-                            <th style="width: 10%;">Check</th>
-                        </tr>
+					<!-- <% } %> -->
                     </tbody>
                 </table>
+              </div>
               
              </div>
             

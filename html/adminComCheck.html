@@ -63,17 +63,6 @@
 	margin-bottom: 15px;
 }
     
-.nav-link {
-	width: 100%;
-	border: 1px solid blue;
-	border-radius: 7px;
-	padding: 8px 15px;
-	display: flex;
-	align-items: center;
-	text-decoration: none;
-	box-sizing: border-box;
-	/* Include padding and border in the element's total width */
-}
 
 .link-text {
 	font-size: 18px;
@@ -125,7 +114,6 @@
 
 .nav-link {
 	width: 100%;
-	border: 1px solid blue;
 	border-radius: 7px;
 	padding: 8px 15px;
 	display: flex;
@@ -195,23 +183,28 @@
                     InternDoor
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link">
+                    <a href="adminDashboard.html" class="nav-link">
                         <span class="ButtonLogo"><img src="../image/homeoffice.png" alt=""></span>
                         <span class="link-text">Home</span>
                     </a>
                 </li>
                 <li class="nav-item">
+                    <div class=" position-relative">
+                        <span style="width:30px; height:30px;" class="position-absolute top-55 start-30  badge border border-light rounded-circle bg-danger p-2" ><%=adminAcceptOrNotCount %><span class="visually-hidden"></span></span>
+
                     <a class="nav-link">
-                        <span class="ButtonLogo"><img src="../image/pending.png" alt=""></span>
+                        <span class="ButtonLogo"><img src="image/pending.png" alt=""></span>
                         <span class="link-text">Pending Job</span>
-                    </a>
+                    
+                    </a></div>
                 </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <span class="ButtonLogo"><img src="../image/company.png" alt=""></span>
+                <li class="nav-item border rounded-3  shadow bg-body-tertiary ">
+                    <a href="adminComCheck.jsp" class="nav-link">
+                        <span class="ButtonLogo" style="background-image: linear-gradient(to bottom right ,skyblue,lightblue,violet ) ;"><img style="background-image: linear-gradient(to bottom right ,skyblue,lightblue,violet ) ;" src="../image/company.png" alt=""></span>
                         <span class="link-text">Company</span>
                     </a>
                 </li>
+                
                 <li class="nav-item">
                     <a href="" class="nav-link">
                         <span class="ButtonLogo"><img src="../image/studentCount.png" alt=""></span>
@@ -219,12 +212,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="adminStuCheck.html" class="nav-link">
                         <span class="ButtonLogo"><img src="../image/postAJob.png" alt=""></span>
                         <span class="link-text">History</span>
                     </a>
                 </li>
-            </li>
+                
+            
 
             </ul>
         </nav>

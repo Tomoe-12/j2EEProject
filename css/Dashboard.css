@@ -1,5 +1,6 @@
    
 * {
+	background-color:  #ffffff;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -31,12 +32,19 @@
 	border: 1px solid black;
 	height: 50px;
 	width: 50px;
-	margin-right: 1em;
+	margin-right: 0.5em;
 	border-radius: 10px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
+
+.link-text {
+	background-color: none;
+	font-size: 20px;
+	color: black;
+}
+
 .ButtonLogo>img {
 	width: 80%;
 }
