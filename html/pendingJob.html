@@ -1,0 +1,246 @@
+<!-- <%@page import="java.io.*" %>
+<%@page import="java.sql.*"%>
+<%@page import="dao.*" %>
+<%@page import="java.util.*"%>
+
+<%@page import="model.*"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%> -->
+
+    <!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="../css/Dashboard.css">
+          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        
+    </head>
+    <style>
+        
+.box > .numOfStuShow, .numOfJobOffer, .numOfCom {
+	width: 20%;
+	height: 100%;
+	padding-left: 10px;
+	border: 2px solid black;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-radius: 10px;
+}
+
+.navbar {
+	position: fixed;
+	left: 0;
+	width: 13%;
+	height: 100vh;
+	border: 1px solid red;
+	padding: 15px;
+}
+.navbar-nav {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100%;
+	margin-top: 15px;
+}
+ 
+    
+.navbar-nav>.nav-item {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 15px;
+}
+    
+.nav-link {
+	width: 100%;
+	border-radius: 7px;
+	padding: 8px 15px;
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	box-sizing: border-box;
+	/* Include padding and border in the element's total width */
+}
+
+.link-text {
+	font-size: 18px;
+}
+    
+    
+   /* dont'nt do css from here */ 
+    
+       
+   table {
+        width: 100%;
+        border-collapse:collapse;
+        table-layout: fixed;
+       
+    }
+    
+    thead {
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    th, td {
+        width: calc(100% / 6);
+        padding: 8px;
+        text-align: center;
+        border: 1px solid black;
+        word-wrap: break-word;
+    }
+    tr{
+        width: 100%;
+        height: 5.5vh;
+    }
+    </style>
+<!-- 
+<%
+	Company_job_dao cmpJobs = new Company_job_dao();
+	List<CompanyJob> jobList = cmpJobs.getAllJobs("admin");
+%> -->
+
+<head>  
+</head>
+<body> 	
+    <nav class="navbar">
+        <ul class="navbar-nav">
+            <li class="logo">
+           <h3>InternDoor</h3>
+        </li>
+            <li class="nav-item">
+                <a href="adminDashboard.jsp" class="nav-link">
+                    <span class="ButtonLogo"><img src="../image/homeoffice.png" alt=""></span>
+                    <span class="link-text">Home</span>
+                </a>
+            </li>
+            <li class="nav-item border rounded-3  shadow-lg  bg-body-tertiary ">
+                <div class=" position-relative">
+                    <span style="width:30px; height:30px;" class="d-flex justify-content-center align-items-center position-absolute top-55 start-30  badge border border-light rounded-circle bg-danger p-2" ><%=adminAcceptOrNotCount %><span class="visually-hidden"></span></span>
+
+                <a  class="nav-link">
+                    <span style="background-image: linear-gradient(to bottom right ,skyblue,lightblue,violet ) ;"  class="ButtonLogo"><img  style="background-image: linear-gradient(to bottom right ,skyblue,lightblue,violet ) ;"  src="../image/pending.png" alt=""></span>
+                    
+                    <span class="link-text">Pending Job</span>
+                
+                </a></div>
+            </li>
+            <li class="nav-item">
+                <a href="adminComCheck.jsp" class="nav-link">
+                    <span class="ButtonLogo"><img src="../image/company.png" alt=""></span>
+                    <span class="link-text">Company</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="adminStuCheck.jsp" class="nav-link">
+                    <span class="ButtonLogo"><img src="../image/studentCount.png" alt=""></span>
+                    <span class="link-text">Student</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="" class="nav-link">
+                    <span class="ButtonLogo"><img src="../image/postAJob.png" alt=""></span>
+                    <span class="link-text">History</span>
+                </a>
+            </li>
+
+        </ul>
+    </nav>
+
+
+<main>
+    <header>
+        <div class="page-text">
+            <span class="page">Pages</span>
+            <span> / Home</span>
+            <span class="dash">Dashboard</span>
+        </div>
+         <div class="input">
+        <div class="Icon">
+            <button type="button" class="user-icon rounded-3"  data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"><img src="../image/user.png" class="border border-less" alt="" ></button>
+            <button class="setting rounded-3" ><img src="../image/settings.png" alt="" class="border border-less"></button>
+            <div class="offcanvas offcanvas-end fix" tabindex="1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                <div class="offcanvas-header">
+                  <h5 class="offcanvas-title text-uppercase fw-bolder" id="offcanvasExampleLabel" style="letter-spacing: 1px; ">InternDoor</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div  class="offcanvas-body d-flex flex-column align-items-center gap-5" >
+                    <div style="width: 100px; height: 100px;" class="border border-black d-flex justify-content-center align-items-center rounded-circle"><img src="../image/user.png" width="80%" height="80%" class="object-fit-cover"></div>
+                    <table class="table table-borderless " style="height: 200px; font-size: 1.1rem;">
+                        <tr>
+                            <td class="fw-bold">Username</td>
+                            <td >Admin</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Email</td>
+                            <td>admin@ucstgi.edu.mm</td>
+                        </tr>
+                      
+                    </table>
+
+                </div>
+                  <div class="d-flex justify-content-center align-items-center"> <button type="button" style="width: 80%; margin-bottom: 30px;" class="btn btn-primary">LogOut</button></div>
+               
+            </div>
+        </div>
+    </div>
+
+    </header>
+
+   <div style="margin-top: 40px;">
+    <table>
+        <tr>
+        	<th style="width: 5%;">No</th>
+            <th style="width: 15%;">Job Name</th>
+            <th style="width: 15%;">Require Position</th>
+            <th style="width: 7%;">Vacancy</th>
+            <th style="width: 20%;">Require Skill</th>
+            <th style="width: 15%;">Require Personality</th>
+            <th style="width: 10%;">DeadLine</th>
+            <th style="width: 25%;">Accept Or Deny</th>
+        </tr>
+<!-- 
+<%
+        // Iterate through the query results and print them in the table
+      for(CompanyJob j : jobList){
+        	int JobID = j.getCompany_job_id();
+        	int company_id = j.getCompany_id();
+%> -->
+            <tr>
+            	<th  style="width: 5%;">No</th>
+                <th  style="width: 15%;"><%= j.getJob_name()%></th>
+                <th  style="width: 15%;"><%= j.getCompany_requirement_position()%></th>
+                <th  style="width: 7%;"><%=j.getCompany_number_of_employee() %></th>
+                <th  style="width: 20%;"><%= j.getRequire_skill()%></th>
+                <th  style="width: 15%;"><%=j.getRequire_personality() %></th>
+                <th  style="width: 10%;"><%= j.getheadLine()%></th>
+                <th  style="width: 25%;">
+                	<form action="adminDecideServlet" method="post" class="d-flex justify-content-around align-items-center" >                		
+					    <!-- <input type="hidden" name="combival" value="<%= JobID +","+ company_id %>"> -->
+                        <button type="submit" class="btn btn-success"  name="aod" value="Accept"  >Success</button>
+                        <button type="submit" class="btn btn-danger" name="aod" value="Deny">Danger</button>	   
+					</form>
+                </th>
+            </tr>
+<!-- <% }%>  -->
+	</table>
+   </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+					
+</body>
+
+</html>
+
+
+
+

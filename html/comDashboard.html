@@ -1,9 +1,45 @@
-
+<!-- <%@page import="java.io.*"%>
+<%@page import="java.sql.*"%>
+<%@page import="dao.*"%>
+<%@page import="controller.*"%>
+<%@page import="java.util.*"%>
+<%@page import="model.*"%>
+<%@page import="jakarta.servlet.*" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%> -->
 
 <!DOCTYPE html>
 <html lang="en">
-
-
+<!-- <%
+	
+	int id = (int)session.getAttribute("cmpid");
+	//int id = 1;
+	// inserting job
+	applicantDao app = new applicantDao();
+	int stucount = app.countingStu(id);
+	
+	// selecting jobs from company_job_table
+	Company_job_dao cmpJob = new Company_job_dao();
+	List<CompanyJob> clist = cmpJob.getAllJobsForSpecificCompany(id);
+	
+	// header counting
+	int jobcount = cmpJob.jobsforSpecificCom();
+	
+	//profile infomation
+	CompanyDao cmpInfo = new CompanyDao();
+	String c_name = "";
+	String c_email = "";
+	String c_address = "";
+	String c_phone = "";
+	List<Company> cmpInfoList = cmpInfo.getComProfile(id);
+	 for(Company info : cmpInfoList){
+		 c_name = info.getCompany_name();
+		 c_email = info.getCompany_email();
+		 c_address = info.getCompany_address();
+		 c_phone = info.getCompany_phone();
+	 }
+	
+%> -->
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,9 +48,8 @@
 
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <style>/* Ensure the table occupies the full width of its container */
-    
-
-    
+ 
+ 
 .box > .numOfStuShow, .numOfJobOffer, .numOfCom {
 	width: 20%;
 	height: 100%;
@@ -25,6 +60,55 @@
 	justify-content: space-between;
 	border-radius: 10px;
 }
+ 
+.navbar {
+	position: fixed;
+	left: 0;
+	width: 13%;
+	height: 100vh;
+	border: 1px solid red;
+	padding: 15px;
+}
+.navbar-nav {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100%;
+	margin-top: 15px;
+}
+ 
+    
+.navbar-nav>.nav-item {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 15px;
+}
+    
+.nav-link {
+	width: 100%;
+	border-radius: 7px;
+	padding: 8px 15px;
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	box-sizing: border-box;
+	/* Include padding and border in the element's total width */
+}
+
+.link-text {
+	font-size: 18px;
+}
+    
+    
+   /* dont'nt do css from here */ 
+    
+    
+
 .navbar {
 	position: fixed;
 	}
@@ -66,31 +150,29 @@
 	font-weight: bold;
 }
 
-.nav-link {
-	width: 100%;
-	border-radius: 7px;
-	padding: 8px 15px;
-	display: flex;
-	align-items: center;
-	text-decoration: none;
-	box-sizing: border-box;
-	/* Include padding and border in the element's total width */
-}
 
-
-/* For Chrome, Safari, and Opera */
 ::-webkit-scrollbar {
-    width: 0px; 
+    width: 8px; /* Width of the scrollbar */
 }
 
 /* For Firefox */
 ::-moz-scrollbar {
-    width: 5px;
+    width: 8px;
 }
 
 /* For Internet Explorer and Edge */
 ::-ms-scrollbar {
-    width: 5px; 
+    width: 8px; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar handle */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar handle on hover */
 }
 
   
@@ -101,13 +183,13 @@
 <body>
 	 <nav class="navbar">
             <ul class="navbar-nav">
-                <li class="logo">
-                    InternDoor
+                <li class="logo" >
+                   <h3>InternDoor</h3>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item border rounded-3  shadow bg-body-tertiary ">
                     <a class="nav-link">
-                        <span class="ButtonLogo"><img src="../image/homeoffice.png" alt=""></span>
-                        <span class="link-text">Offering Job</span>
+                        <span class="ButtonLogo" style="background-image: linear-gradient(to bottom right ,skyblue,lightblue, violet) ;"><img style="background-image: linear-gradient(to bottom right ,skyblue,lightblue, violet) ;" src="../image/homeoffice.png" alt=""></span>
+                        <span class="link-text">Home</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -117,7 +199,7 @@
                     </a>
                 </li>
             <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="comHistory.jsp" class="nav-link">
                     <span class="ButtonLogo"><img src="../image/history.png" alt=""></span>
                     <span class="link-text">History</span>
                 </a>
@@ -125,10 +207,9 @@
 
             </ul>
         </nav>
-
 	<main>  
 	<header>
-                <div class="page-text" >
+                <div class="page-text">
                     <span class="page">Pages</span>
                     <span> / Dashboard</span>
                     <span class="dash">Dashboard</span>
@@ -145,97 +226,97 @@
                             <div  class="offcanvas-body d-flex flex-column align-items-center gap-5" >
                                 <div style="width: 100px; height: 100px;" class="border border-black d-flex justify-content-center align-items-center rounded-circle"><img src="../image/user.png" width="80%" height="80%" class="object-fit-cover"></div>
                                 <table class="table table-borderless " style="height: 200px; font-size: 1.1rem;">
-                                    <tr>
-                                        <td class="fw-bold">Companyy Name</td>
-                                        <td >Khun Thi Han</td>
+                                      <tr>
+                                        <td class="fw-bold">Company</td>
+                                        <td ><%=c_name %></td>
                                     </tr>
                                     <tr>
                                         <td class="fw-bold">Email</td>
-                                        <td>khunthihan@gmail.com</td>
+                                        <td><%=c_email %></td>
                                     </tr>
                                     <tr>
                                         <td class="fw-bold">Phone</td>
-                                        <td>Tgi</td>
+                                        <td><%=c_phone %></td>
                                     </tr>
                                     <tr>
                                         <td class="fw-bold">Address</td>
-                                        <td>khunthihan@gmail.com</td>
+                                        <td><%=c_address %></td>
                                     </tr>
-                                    <tr>
-                                        <td class="fw-bold">Phone</td>
-                                        <td>Tgi</td>
-                                    </tr>
+                                    
                                 </table>
-
                             </div>
-                            <div class="d-flex justify-content-center align-items-center"> <button type="button" style="width: 80%; margin-bottom: 30px;" class="btn btn-primary">LogOut</button></div>
-                           
+                            <form action="LogoutForEvery" method="post">
+    <div class="d-flex justify-content-center align-items-center">
+        <button type="submit" style="width: 80%; margin-bottom: 30px;" class="btn btn-primary">Log Out</button>
+    </div>
+</form>
+
                         </div>
                     </div>
                 </div>
 
             </header>
 		<div class="main">
-			   <div class="box com">
+			   <div class="box">
                 <div class="numOfStuShow">
                     <div class="stuShow">
                         <span class="text">Number Of Students</span>
-                        <span class="number">123</span>
+                       	<span class="number" ><%=stucount %></span>
                     </div>
-                    <span class="ButtonLogo"><img src="../image/studentCount.png" alt=""></span>
+                    <span class="ButtonLogo" style="background-image: linear-gradient(to bottom right ,skyblue,lightblue, violet) ;"><img style="background-image: linear-gradient(to bottom right ,skyblue,lightblue, violet) ;" src="../image/studentCount.png" alt=""></span>
                     </div>
                 <div class="numOfJobOffer">
                     <div class="stuShow">
                         <span class="text">Number Of Jobs</span>
-                        <span class="number">123</span>
+                        <span class="number"><%=jobcount %></span>
                     </div>
-                    <span class="ButtonLogo"><img src="../image/jobCount.png" alt=""></span>
+                    <span class="ButtonLogo" style="background-image: linear-gradient(to bottom right ,skyblue,lightblue, violet) ;"><img style="background-image: linear-gradient(to bottom right ,skyblue,lightblue, violet) ;" src="../image/jobCount.png" alt=""></span>
                 </div>
                </div>
-
-                    <div class="comName">Hello world</div>
-			<table>
+                    <div class="headText"><%=c_name%></div>
+		<div class="border border-black rounded" style="overflow-x:hidden;">
+				<table>
 				<thead>
-							<tr style="background-color: rebeccapurple;" >
+							 <tr class="bg-danger border border-0 rounded ">
 						<th style="width: 5%;">No</th>
-                        <th style="width: 20%;">Position</th>
-                        <th style="width: 20%;">Require Skill</th>
-                        <th style="width: 20%;">Require Personality</th>
+						<th>Job_name</th>
+                        <th style="width: 15%;">Position</th>
+                        <th style="width: 15%;">Require Skill</th>
+                        <th style="width: 15%;">Require Personality</th>
                         <th style="width: 10%;">Total Vacancy</th>
                         <th style="width: 10%;">DeadLine</th>
                         <th style="width: 10%;">Total Student Applied</th>
-                        <th style="width: 10%;">Check</th>
+                        <th style="width: 10%; padding-right: 10px;">Check</th>
 					</tr>
 				</thead>
 				<tbody>
-                    <tr style="background-color: rebeccapurple;" >
+					Use JSTL forEach to iterate over jobList attribute
+					<% for(CompanyJob j : clist){%>
+					<% int cmpJobId = j.getCompany_job_id(); %>
+					<tr>
+						<% String position = j.getCompany_requirement_position(); %>
 						<th style="width: 5%;">No</th>
-                        <th style="width: 20%;">Position</th>
-                        <th style="width: 20%;">Require Skill</th>
-                        <th style="width: 20%;">Require Personality</th>
-                        <th style="width: 10%;">Total Vacancy</th>
-                        <th style="width: 10%;">DeadLine</th>
+						<th><%=j.getJob_name() %></th>
+                        <th style="width: 15%;"><%=position%></th>
+                        <th style="width: 15%;"><%=j.getRequire_skill() %></th>
+                        <th style="width: 15%;"><%=j.getRequire_personality() %></th>
+                        <th style="width: 10%;"><%=j.getCompany_number_of_employee() %></th>
+                        <th style="width: 10%;"><%=j.getDeadLine() %></th>
                         <th style="width: 10%;">Total Student Applied</th>
-                        <th style="width: 10%;">Check</th>
-					</tr>
-                    <tr style="background-color: rebeccapurple;" >
-						<th style="width: 5%;">No</th>
-                        <th style="width: 20%;">Position</th>
-                        <th style="width: 20%;">Require Skill</th>
-                        <th style="width: 20%;">Require Personality</th>
-                        <th style="width: 10%;">Total Vacancy</th>
-                        <th style="width: 10%;">DeadLine</th>
-                        <th style="width: 10%;">Total Student Applied</th>
-                        <th style="width: 10%;">Check</th>
-					</tr>
+                        <th style="width: 10%; padding-right: 10px;"><a href="CheckStuAfterComDash.jsp?position=<%=position%>&cmpJobId=<%=cmpJobId%>">Check</a></th>
+					
+					 </tr>
+					<% } %>
+					
 				</tbody>
 			</table>
+		</div>
 
 		</div>
 
 
 	</main>
-	 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+	 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"> </script>
     
 </body>
 
