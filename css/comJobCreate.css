@@ -1,0 +1,86 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+	overflow-y: scroll;
+}
+
+.big5-container{
+    display: inline-block;
+	margin-right: 15%;
+}
+.big5 {
+	display: flex;
+	align-items: flex-end;
+	justify-content: flex-start;
+	cursor: pointer;
+}
+h3{
+	overflow: hidden;
+}
+
+#about {
+	font-size: 18px;
+	width: 500px;
+	height: 400px;
+	background-image: linear-gradient(whitesmoke, lightgrey);
+	box-sizing: content-box;
+	cursor: pointer;
+	margin-top: 20px;
+
+}
+
+#btn:hover {
+	color: white;
+	background-color: black;
+	cursor: pointer;
+}
+
+#btn1:hover {
+	color: white;
+	background-color: black;
+	cursor: pointer;
+}
+
+#h3:hover {
+	color: red;
+	transition: 0.6s;
+}
+.tableLol {
+	padding: 20px 20px 0px 20px;
+}
+.tableLol tr th,td{
+	height: 7vh;
+}
+
+.tableLol tr th {
+	display: flex;
+	align-items: center;
+}
+.tableLol tr td{
+	width: 55% ;
+	font-size: 20px;
+}
+
+#h3 {
+	color: green
+}
+#container{
+	width: 60%;
+	border: 1px solid red;
+	padding: 0;
+}
+.table-head{
+	flex-direction: column;
+	border-bottom: 1px solid black;
+}
+
+.table-head > span{
+	margin-left: 25px;
+}
+.tableLol input{
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 80%;
+}

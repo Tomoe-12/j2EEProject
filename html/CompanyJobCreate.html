@@ -1,63 +1,295 @@
-<!DOCTYPE html>
-<html>
+<!-- <%@page import="java.io.*"%>
+<%@page import="java.sql.*"%>
+<%@page import="dao.Company_job_dao"%>
+<%@page import="controller.*"%>
+<%@page import="java.util.*"%>
+<%@page import="model.*"%>
+<%@page import="jakarta.servlet.*"%> -->
 
-<head>
-	<meta charset="ISO-8859-1">
-	<title>Cereate The Form</title>
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="ISO-8859-1">
+<title>Create The Form</title>
+<!-- <%
+int id = (int)session.getAttribute("cmpid");
+Company_job_dao cmpJob = new Company_job_dao();
+request.setAttribute("compid", id);
+request.getRequestDispatcher("jobCreate").include(request, response);
+%> -->
+
+<link rel="stylesheet" type="text/css" href="../css/Dashboard.css">
+<link rel="stylesheet" href="../css/comJobCreate.css">
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <style>/* Ensure the table occupies the full width of its container */
+ 
+ 
+.box > .numOfStuShow, .numOfJobOffer, .numOfCom {
+	width: 20%;
+	height: 100%;
+	padding-left: 10px;
+	border: 2px solid black;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-radius: 10px;
+}
+ 
+.navbar {
+	position: fixed;
+	left: 0;
+	width: 13%;
+	height: 100vh;
+	border: 1px solid red;
+	padding: 15px;
+}
+.navbar-nav {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100%;
+	margin-top: 15px;
+}
+ 
+    
+.navbar-nav>.nav-item {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 15px;
+}
+    
+.nav-link {
+	width: 100%;
+	border-radius: 7px;
+	padding: 8px 15px;
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	box-sizing: border-box;
+	/* Include padding and border in the element's total width */
+}
+
+.link-text {
+	font-size: 18px;
+}
+</style>
 </head>
 <body>
-	<center>
-		<h2>Enter Your Job Information</h2>
-		<form action="JobCreate" method="post">
-			<table>
-				<tr>
-					<td>Company Name:</td>
-					<td><input type="text" name="name" required></td>
-				</tr>
-				<tr>
-					<td>Company Email</td>
-					<td><input type="text" name="email" required></td>
-				</tr>
-				<tr>
-					<td>Company Address</td>
-					<td><input type="text" name="add" required></td>
-				</tr>
-				<tr>
-					<td>Phone Number:</td>
-					<td><input type="text" name="phno" required></td>
-				</tr>
-				<tr>
-					<td>How many person that you looking for:</td>
-					<td><input type="text" name="person" required></td>
-				</tr>
-				<tr>
-					<td>Positions :</td>
-					<td><input type="text" name="position" required></td>
-				</tr>
-				<tr>
-					<td>Priority Persionality:</td>
-					<td>
-						<select name="personal" required>
-							<option name="personal" value="Opnness">Openness</option>
-							<option name="personal" value="Conscientiousness">Conscientiousness</option>
-							<option name="personal" value="Extroversion">Extroversion</option>
-							<option name="personal" value="Agreeavleness">Agreeableness</option>
-							<option name="personal" value="Neuroticism">Neuroticism</option>
-						</select>
-					</td>
-				</tr>
+	<nav class="navbar">
+		<ul class="navbar-nav">
+			<li class="logo" >
+			   <h3>InternDoor</h3>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link">
+					<span class="ButtonLogo"><img src="../image/homeoffice.png" alt=""></span>
+					<span class="link-text">Home</span>
+				</a>
+			</li>
+			<li class="nav-item border rounded-3  shadow bg-body-tertiary ">
+				<a href="CompanyJobCreate.jsp" class="nav-link">
+					<span class="ButtonLogo" style="background-image: linear-gradient(to bottom right ,skyblue,lightblue, violet) ;"><img style="background-image: linear-gradient(to bottom right ,skyblue,lightblue, violet) ;" src="../image/postAJob.png" alt=""></span>	
+				<span class="link-text">Post Job</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a href="comHistory.jsp" class="nav-link">
+					<span class="ButtonLogo"><img src="../image/history.png" alt=""></span>
+					<span class="link-text">History</span>
+			</a>
+		</li>
 
-				<tr>
-					<td>Require Skill:</td>
-					<td><input type="text" name="skill" required></td>
-				</tr>
+		</ul>
+	</nav>
+	<main >
+		
+	<header style="margin-bottom: 40px;">
+		<div class="page-text">
+			<span class="page">Pages</span>
+			<span> / JobCreate</span>
+			<span class="dash">Dashboard</span>
+		</div>
+		 <div class="input">
+			<div class="Icon">
+				<button type="button" class="user-icon rounded-3"  data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"><img src="../image/user.png" class="border border-less" alt="" ></button>
+				<button class="setting rounded-3" ><img src="../image/settings.png" alt="" class="border border-less"></button>
+				<div class="offcanvas offcanvas-end fix" tabindex="1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+					<div class="offcanvas-header">
+					  <h5 class="offcanvas-title text-uppercase fw-bolder" id="offcanvasExampleLabel" style="letter-spacing: 1px; ">InternDoor</h5>
+					  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+					</div>
+					<div  class="offcanvas-body d-flex flex-column align-items-center gap-5" >
+						<div style="width: 100px; height: 100px;" class="border border-black d-flex justify-content-center align-items-center rounded-circle"><img src="../image/user.png" width="80%" height="80%" class="object-fit-cover"></div>
+						<table class="table table-borderless tableLol " style=" font-size: 1.1rem;">
+							  <tr>
+								<td class="fw-bold">Company</td>
+								<td ><%=c_name %></td>
+							</tr>
+							<tr>
+								<td class="fw-bold">Email</td>
+								<td><%=c_email %></td>
+							</tr>
+							<tr>
+								<td class="fw-bold">Phone</td>
+								<td><%=c_phone %></td>
+							</tr>
+							<tr>
+								<td class="fw-bold">Address</td>
+								<td><%=c_address %></td>
+							</tr>
+							
+						</table>
+					</div>
+					<form action="LogoutForEvery" method="post">
+<div class="d-flex justify-content-center align-items-center">
+<button type="submit" style="width: 80%; margin-bottom: 30px;" class="btn btn-primary">Log Out</button>
+</div>
+</form>
 
-				<tr>
-					<th><input type="reset" value="Clear"></th>
-					<th><input type="Submit" value="Insert"></th>
-			</table>
-		</form>
-	</center>
+				</div>
+			</div>
+		</div>
+
+	</header>
+		<div class="big5-container  float-end "  >
+			
+				<div class="big5">
+					<span id="h3" style="font-size: 20px;">What are Big 5 models?</span>&emsp; 
+					<button id="btn" onclick="about()" class="btn btn-secondary btn-sm">Learn More</button>
+				</div>
+				<div class="shadow p-3 mb-5 bg-body-tertiary rounded" id="about" style="visibility: hidden; position: absolute;">
+			
+					<h3>Extroversion</h3>
+			
+					<p>&emsp;Extroversion (E) is the personality trait of seeking
+						fulfillment from sources outside the self or in community. High
+						scorers tend to be very social while low scorers prefer to work on
+						their projects alone</p>
+					<h3>Agreeableness</h3>
+			
+					<p>&emsp; Agreeableness (A) reflects how much individuals adjust
+						their behavior to suit others. High scorers are typically polite and
+						like people. Low scorers tend to 'tell it like it is</p>
+			
+					<h3>Conscientiousness</h3>
+			
+					<p>&emsp;Conscientiousness (C) is the personality trait of being
+						honest and hardworking. High scorers tend to follow rules and prefer
+						clean homes. Low scorers may be messy and cheat others</p>
+			
+					<h3>Neuroticisum</h3>
+			
+					<p>&emsp;Neuroticism (N) is the personality trait of being
+						emotional. High scorers tend to have high emotional reactions to
+						stress. They may perceive situations as threatening and be more
+						likely to feel moody, depressed, angry, anxious, and experience mood
+						swing. Low scorers tend to be more emotionally stable and less
+						reactive to stress.</p>
+			
+					<h3>Openness to Experience</h3>
+			
+					<p>&emsp;Openness to Experience (O) is the personality trait of
+						seeking new experiences and intellectual pursuits. High scores may
+						day dream a lot (enjoy thinking about new and different things). Low
+						scorers tend to be very down to earth (more of a "hear and now"
+						thinker). Consequently, it is thought that people with higher scores
+						might be more creative, flexible, curious, and adventurous, whereas
+						people with lower score might tend to enjoy routines, predictability,
+						and structure</p>
+			
+					
+					<button id="btn1" onclick="exist()" class="btn btn-secondary ">Exist</button>
+			
+				</div>
+			
+		</div>
+	
+		<div class=" rounded-3" id="container">
+			<div style="width: 100% ; height: 10vh;" class="table-head d-flex justify-content-center">
+				<span style="color: black; font-size: 22px; font-weight: bold; display: inline;">Enter Your Job Information</span>
+				<span style="display: inline;">Add fields that you want your candidates to fill</span>
+			</div>
+			<form action="jobCreate" method="post" >
+				<table  class="table tableLol " style=" border-collapse: separate;" >
+					<tr>
+						<th>Job Name :</th>
+						<td><input type="text" name="job_name"></td>
+					</tr>
+					
+					
+					<tr>
+						<th>How many person that you looking for:</th>
+						<td><input type="text" name="person"></td>
+					</tr>
+					<tr>
+						<th>Position :</th>
+						<td><input type="text" name="position"></td>
+					</tr>
+					<tr>
+						<th>Priority Persionality:</th>
+						<td><select name="personal">
+								<option name="persona" value="Openness" id="Open">Openness</option>
+								<option name="persona" value="Conscientiousness" id="Con">Conscientiousness</option>
+								<option name="persona" value="Extroversion" id="Extro">Extroversion</option>
+								<option name="persona" value="Agreeableness" id="Agree">Agreeableness</option>
+								<option name="persona" value="Neuroticism" id="Neuro">Neuroticism</option>
+						</select></td>
+					</tr>
+	
+					<tr>
+						<th>Require Skill:</td>
+						<td><input type="text" name="skill"></td>
+					</tr>
+					<tr>
+						<th>Applicable Deadline</th>
+						<td><input type="date" name="date"></td>
+					</tr>
+						
+				</table>
+				<div style="height: 7vh;" class="d-flex justify-content-around align-items-center">
+					<button type="reset" class="btn btn-danger btn-lg " value="Clear">Clear</button>
+					<button type="submit"  class="btn btn-success btn-lg" value="Insert">Submit</button>
+				</div>
+			</form>
+		</div>
+	</main>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"> </script>
+    
+	<script>
+
+		var container=document.getElementById("container");
+		container.addEventListener("click",()=>{
+           var about = document.getElementById("about");
+			about.style.visibility = "hidden";
+
+			var h3 = document.getElementById("h3");
+			var btn = document.getElementById("btn");
+			h3.style.visibility = "visible";
+			btn.style.visibility = "visible";
+		},false)
+		function about() {
+
+			var about = document.getElementById("about");
+			about.style.visibility = "visible";
+
+			var h3 = document.getElementById("h3");
+			var btn = document.getElementById("btn");
+		}
+
+		function exist() {
+			var about = document.getElementById("about");
+			about.style.visibility = "hidden";
+
+			var h3 = document.getElementById("h3");
+			var btn = document.getElementById("btn");
+			h3.style.visibility = "visible";
+			btn.style.visibility = "visible";
+		}
+	</script>
 </body>
 
 </html>

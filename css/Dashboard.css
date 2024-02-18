@@ -222,20 +222,19 @@ main {
 	justify-content: space-between;
 }
 
-/* For Chrome, Safari, and Opera */
+
 ::-webkit-scrollbar {
-    width: 0px; /* Adjust the width as needed */
+    width: 0px; 
 }
 
-/* For Firefox */
 ::-moz-scrollbar {
-    width: 5px; /* Adjust the width as needed */
+    width: 5px;
 }
 
-/* For Internet Explorer and Edge */
 ::-ms-scrollbar {
-    width: 5px; /* Adjust the width as needed */
-}
+    width: 5px;
+} 
+
 
 .text {
 	font-size: 16px;
